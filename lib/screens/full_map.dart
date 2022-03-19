@@ -1,7 +1,10 @@
+import 'package:dnddmcompanion/widgets/draggable_map.dart';
 import 'package:flutter/material.dart';
 
 class FullMap extends StatefulWidget {
-  const FullMap({Key? key}) : super(key: key);
+  final String imageString;
+
+  const FullMap({required this.imageString, Key? key}) : super(key: key);
 
   @override
   State<FullMap> createState() => _FullMapState();
@@ -10,6 +13,18 @@ class FullMap extends StatefulWidget {
 class _FullMapState extends State<FullMap> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .8,
+              child: DraggableMap(imageString: widget.imageString),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
