@@ -94,26 +94,29 @@ class _CharacterDetailState extends State<CharacterDetail> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 200,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    RoundTextField(
-                      widthInput: MediaQuery.of(context).size.width * .4,
-                      controller: armorClassController,
-                      dividerText: 'ArmorClass',
-                    ),
-                    RoundTextField(
-                      widthInput: MediaQuery.of(context).size.width * .4,
-                      controller: initiativeController,
-                      dividerText: 'Initiative',
-                    ),
-                  ],
-                ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: 200,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  RoundTextField(
+                    widthInput: MediaQuery.of(context).size.width * .4,
+                    controller: armorClassController,
+                    dividerText: 'ArmorClass',
+                  ),
+                  RoundTextField(
+                    widthInput: MediaQuery.of(context).size.width * .4,
+                    controller: initiativeController,
+                    dividerText: 'Initiative',
+                  ),
+                ],
               ),
+            ),
+            const SizedBox(
+              height: 40,
             ),
           ]);
         },

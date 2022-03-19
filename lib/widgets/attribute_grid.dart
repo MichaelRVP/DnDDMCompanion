@@ -12,32 +12,26 @@ class AttributeGrid extends StatefulWidget {
 }
 
 class _AttributeGridState extends State<AttributeGrid> {
-  late Character character;
-
-  @override
-  void initState() {
-    super.initState();
-    character = widget.character.decouple(widget.character);
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 400,
+      height: 375,
       child: GridView.count(
         padding: const EdgeInsets.all(20),
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
         crossAxisCount: 3,
-        childAspectRatio: 1.8,
+        childAspectRatio: 1.5,
         children: List.generate(
           6,
           (index) {
             return RoundTextField(
-              dividerText: character.getAttributeList(character)[index].name,
+              dividerText: widget.character
+                  .getAttributeList(widget.character)[index]
+                  .name,
               controller: TextEditingController(
-                text: character
-                    .getAttributeList(character)[index]
+                text: widget.character
+                    .getAttributeList(widget.character)[index]
                     .value
                     .toString(),
               ),
