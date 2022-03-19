@@ -29,6 +29,19 @@ class HomeScreen extends StatelessWidget {
                 },
               ),
             ),
+            SizedBox(
+              width: 350,
+              child: GradientTextButton(
+                inputString: 'See Map',
+                tapFunction: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => FullPageCharacterEdit(
+                      character: Character().defaultCharacter(),
+                    ),
+                  ));
+                },
+              ),
+            ),
           ],
         ),
       ),
