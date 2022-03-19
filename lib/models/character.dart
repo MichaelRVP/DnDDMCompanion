@@ -47,4 +47,22 @@ class Character {
         wisdom: 12,
         icon: 'images/playerIcons/player1.png');
   }
+
+  Character decouple(Character inputCharater) {
+    return Character(
+      firstName: inputCharater.firstName,
+      lastName: inputCharater.lastName,
+      strength: inputCharater.strength,
+      armorClass: inputCharater.armorClass,
+      charisma: inputCharater.charisma,
+      constitution: inputCharater.constitution,
+      dexterity: inputCharater.dexterity,
+      initiative: inputCharater.initiative,
+      intelligence: inputCharater.intelligence,
+      speed: inputCharater.speed,
+      vision: inputCharater.vision,
+      wisdom: inputCharater.wisdom,
+      icon: inputCharater.icon,
+    );
+  }
 }

@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
                 tapFunction: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => CharacterDetail(
-                      character: Character(firstName: 'test'),
+                      character: Character().defaultCharacter(),
                     ),
                   ));
                 },

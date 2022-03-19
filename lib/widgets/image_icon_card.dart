@@ -9,15 +9,16 @@ class ImageIconCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
+          image: DecorationImage(
+            fit: BoxFit.fitHeight,
+            image: AssetImage(imageString),
+          ),
           borderRadius: const BorderRadius.only(
             bottomRight: Radius.circular(40.0),
           ),
           color: Colors.white.withOpacity(.8)),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Image(image: AssetImage(imageString)),
-      ),
     );
   }
 }
