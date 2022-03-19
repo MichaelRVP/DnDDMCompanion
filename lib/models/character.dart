@@ -1,3 +1,4 @@
+import 'package:dnddmcompanion/models/attribute.dart';
 import 'package:flutter/material.dart';
 
 class Character {
@@ -64,5 +65,47 @@ class Character {
       wisdom: inputCharater.wisdom,
       icon: inputCharater.icon,
     );
+  }
+
+  List<Attribute> getAttributeList(Character inputCharater) {
+    List<Attribute> returnList = [];
+    returnList.add(
+      Attribute(
+        name: 'STR',
+        value: inputCharater.strength,
+      ),
+    );
+    returnList.add(
+      Attribute(
+        name: 'DEX',
+        value: inputCharater.dexterity,
+      ),
+    );
+    returnList.add(
+      Attribute(
+        name: 'CON',
+        value: inputCharater.constitution,
+      ),
+    );
+    returnList.add(
+      Attribute(
+        name: 'INT',
+        value: inputCharater.intelligence,
+      ),
+    );
+    returnList.add(
+      Attribute(
+        name: 'WIS',
+        value: inputCharater.wisdom,
+      ),
+    );
+    returnList.add(
+      Attribute(
+        name: 'CHA',
+        value: inputCharater.charisma,
+      ),
+    );
+
+    return returnList;
   }
 }

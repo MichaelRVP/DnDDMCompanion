@@ -1,5 +1,5 @@
 import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/screens/character_detail.dart';
+import 'package:dnddmcompanion/widgets/character_detail.dart';
 import 'package:dnddmcompanion/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 

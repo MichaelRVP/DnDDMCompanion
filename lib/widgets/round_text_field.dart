@@ -47,6 +47,7 @@ class RoundTextField extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
               dividerText ?? '',
@@ -57,6 +58,7 @@ class RoundTextField extends StatelessWidget {
               thickness: 2,
             ),
             Container(
+              padding: const EdgeInsets.only(bottom: 8),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(
                   Radius.circular(40.0),

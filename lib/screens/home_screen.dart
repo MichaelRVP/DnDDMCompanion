@@ -1,5 +1,6 @@
 import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/screens/character_detail.dart';
+import 'package:dnddmcompanion/screens/full_page_character_edit.dart';
+import 'package:dnddmcompanion/widgets/character_detail.dart';
 import 'package:dnddmcompanion/widgets/gradient_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
                 inputString: 'See Character',
                 tapFunction: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => CharacterDetail(
+                    builder: (context) => FullPageCharacterEdit(
                       character: Character().defaultCharacter(),
                     ),
                   ));
