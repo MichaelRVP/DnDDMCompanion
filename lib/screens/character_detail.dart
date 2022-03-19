@@ -14,7 +14,15 @@ class CharacterDetail extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Character Detail'),
       ),
-      body: Column(children: []),
+      body: Column(children: [
+        Row(
+          children: [
+            Image(
+                image: AssetImage(
+                    character.icon ?? character.defaultCharacter().icon!)),
+          ],
+        )
+      ]),
     );
   }
 }

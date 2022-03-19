@@ -13,7 +13,7 @@ class Character {
   int speed;
   int initiative;
   int armorClass;
-  AssetImage? icon;
+  String? icon;
 
   Character({
     required this.firstName,
@@ -30,4 +30,21 @@ class Character {
     this.armorClass = 0,
     this.icon,
   });
+
+  Character defaultCharacter() {
+    return Character(
+        firstName: 'test',
+        lastName: 'character',
+        strength: 10,
+        armorClass: 14,
+        charisma: 8,
+        constitution: 12,
+        dexterity: 10,
+        initiative: 0,
+        intelligence: 14,
+        speed: 30,
+        vision: 60,
+        wisdom: 12,
+        icon: 'images/playerIcons/player1.png');
+  }
 }
