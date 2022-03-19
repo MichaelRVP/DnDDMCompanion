@@ -16,7 +16,7 @@ class Character {
   String? icon;
 
   Character({
-    required this.firstName,
+    this.firstName = '',
     this.lastName = '',
     this.strength = 0,
     this.dexterity = 0,

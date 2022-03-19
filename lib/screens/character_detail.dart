@@ -1,4 +1,5 @@
 import 'package:dnddmcompanion/models/character.dart';
+import 'package:dnddmcompanion/widgets/image_icon_card.dart';
 import 'package:flutter/material.dart';
 
 class CharacterDetail extends StatelessWidget {
@@ -17,9 +18,11 @@ class CharacterDetail extends StatelessWidget {
       body: Column(children: [
         Row(
           children: [
-            Image(
-                image: AssetImage(
-                    character.icon ?? character.defaultCharacter().icon!)),
+            SizedBox(
+                width: 400,
+                child: ImageIconCard(
+                    imageString:
+                        character.icon ?? character.defaultCharacter().icon!)),
           ],
         )
       ]),
