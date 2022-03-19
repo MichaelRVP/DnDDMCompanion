@@ -27,7 +27,13 @@ class _FullPageCharacterEditState extends State<FullPageCharacterEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.save))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                //where you would save the edited character
+              },
+              icon: const Icon(Icons.save))
+        ],
       ),
       body: CharacterDetail(character: character),
     );
