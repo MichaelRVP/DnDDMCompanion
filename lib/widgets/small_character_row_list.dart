@@ -1,5 +1,5 @@
 import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/widgets/small_character_card.dart';
+import 'package:dnddmcompanion/widgets/draggable_character_card.dart';
 import 'package:flutter/material.dart';
 
 class SmallCharacterRowList extends StatelessWidget {
@@ -23,7 +23,7 @@ class SmallCharacterRowList extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           itemBuilder: ((context, index) {
-            return SmallCharacterCard(
+            return DraggableCharacterCard(
               character: characters[index],
               totalCharacters: characters.length,
             );

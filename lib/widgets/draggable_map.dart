@@ -42,7 +42,7 @@ class _DraggableMapState extends State<DraggableMap> {
                   child: InteractiveViewer(
                     panEnabled: true,
                     minScale: 0.25,
-                    maxScale: 3,
+                    maxScale: 8,
                     child: Transform.rotate(
                       angle: radians(rotation),
                       child: Image.asset(
