@@ -1,5 +1,5 @@
 import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/widgets/draggable_character_card.dart';
+import 'package:dnddmcompanion/widgets/characters/draggable_character_card.dart';
 import 'package:flutter/material.dart';
 
 class SmallCharacterRowList extends StatelessWidget {

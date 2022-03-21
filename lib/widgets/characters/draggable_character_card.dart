@@ -1,7 +1,7 @@
 import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/widgets/empty_small_card.dart.dart';
-import 'package:dnddmcompanion/widgets/small_character_card.dart';
-import 'package:dnddmcompanion/widgets/small_image_icon_card.dart';
+import 'package:dnddmcompanion/widgets/characters/empty_small_card.dart.dart';
+import 'package:dnddmcompanion/widgets/characters/small_character_card.dart';
+import 'package:dnddmcompanion/widgets/images/small_image_icon_card.dart';
 import 'package:flutter/material.dart';
 
 class DraggableCharacterCard extends StatelessWidget {

@@ -1,5 +1,5 @@
-import 'package:dnddmcompanion/widgets/draggable_map.dart';
-import 'package:dnddmcompanion/widgets/small_character_row_list.dart';
+import 'package:dnddmcompanion/widgets/images/draggable_map.dart';
+import 'package:dnddmcompanion/widgets/characters/small_character_row_list.dart';
 import 'package:flutter/material.dart';
 
 class FullMap extends StatefulWidget {

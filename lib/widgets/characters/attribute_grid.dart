@@ -1,5 +1,5 @@
 import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/widgets/round_text_field.dart';
+import 'package:dnddmcompanion/widgets/inputs/round_text_field.dart';
 import 'package:flutter/material.dart';
 
 class AttributeGrid extends StatefulWidget {

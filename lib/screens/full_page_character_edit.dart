@@ -1,5 +1,5 @@
 import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/widgets/character_detail.dart';
+import 'package:dnddmcompanion/widgets/characters/character_detail.dart';
 import 'package:flutter/material.dart';
 
 class FullPageCharacterEdit extends StatefulWidget {
