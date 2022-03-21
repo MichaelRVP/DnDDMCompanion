@@ -1,4 +1,5 @@
 import 'package:dnddmcompanion/widgets/draggable_map.dart';
+import 'package:dnddmcompanion/widgets/small_character_row_list.dart';
 import 'package:flutter/material.dart';
 
 class FullMap extends StatefulWidget {
@@ -17,10 +18,20 @@ class _FullMapState extends State<FullMap> {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.max,
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * .8,
-              child: DraggableMap(imageString: widget.imageString),
+              height: MediaQuery.of(context).size.height * .6,
+              child: Center(
+                child: DraggableMap(imageString: widget.imageString),
+              ),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * .25,
+              width: MediaQuery.of(context).size.width * .8,
+              child: Center(
+                child: SmallCharacterRowList(),
+              ),
             ),
           ],
         ),

@@ -27,7 +27,7 @@ class _DraggableMapState extends State<DraggableMap> {
       return Stack(
         children: [
           SizedBox(
-            width: constraints.maxWidth * .95,
+            width: constraints.maxWidth * .8,
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(
