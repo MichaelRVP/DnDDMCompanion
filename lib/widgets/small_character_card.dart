@@ -40,7 +40,10 @@ class _SmallCharacterCardState extends State<SmallCharacterCard> {
         builder: ((context, constraints) {
           return Padding(
             padding: const EdgeInsets.fromLTRB(2, 2, 0, 2),
-            child: Container(
+            child: AnimatedContainer(
+              width: selected ? 300 : 200,
+              curve: Curves.fastOutSlowIn,
+              duration: const Duration(seconds: 1),
               decoration: BoxDecoration(
                   border: selected
                       ? Border.all(
@@ -53,18 +56,24 @@ class _SmallCharacterCardState extends State<SmallCharacterCard> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: constraints.maxHeight * .7,
-                    width: selected ? 300 : 200,
+                    height: constraints.maxHeight * .6,
                     child:
                         SmallImageIconCard(imageString: widget.character.icon!),
                   ),
                   const Spacer(),
-                  Text(
-                    '  ${widget.character.firstName} ${widget.character.lastName}  ',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          '${widget.character.firstName} ${widget.character.lastName}',
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 32,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const Spacer(),
                 ],
