@@ -1,4 +1,5 @@
 import 'package:dnddmcompanion/models/character.dart';
+import 'package:dnddmcompanion/widgets/empty_small_card.dart.dart';
 import 'package:dnddmcompanion/widgets/small_character_card.dart';
 import 'package:dnddmcompanion/widgets/small_image_icon_card.dart';
 import 'package:flutter/material.dart';
@@ -16,17 +17,22 @@ class DraggableCharacterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Draggable(
-      childWhenDragging: SmallCharacterCard(
-          character: character, totalCharacters: totalCharacters),
+      childWhenDragging: EmptySmallCard(
+        totalCharacters: totalCharacters,
+      ),
       feedback: SizedBox(
         width: 150,
         height: 150,
         child: Center(
-          child: SmallImageIconCard(imageString: character.icon!),
+          child: SmallImageIconCard(
+            imageString: character.icon!,
+          ),
         ),
       ),
       child: SmallCharacterCard(
-          character: character, totalCharacters: totalCharacters),
+        character: character,
+        totalCharacters: totalCharacters,
+      ),
     );
   }
 }
