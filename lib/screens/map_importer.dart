@@ -1,5 +1,6 @@
 import 'package:dnddmcompanion/services/data_services.dart';
-import 'package:dnddmcompanion/widgets/images/map_list_view.dart';
+import 'package:dnddmcompanion/widgets/maps/wrapper/grid_overlay_map_wrapper.dart';
+import 'package:dnddmcompanion/widgets/maps/map_list_view.dart';
 import 'package:dnddmcompanion/widgets/loading.dart';
 import 'package:flutter/material.dart';
 
@@ -18,11 +19,18 @@ class MapImporter extends StatelessWidget {
             if (snapshot.hasData) {
               List<String> mapsList = snapshot.data!;
 
-              print(mapsList);
-
-              return SizedBox(
-                height: 250,
-                child: MapListView(mapsList: mapsList),
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 300,
+                      width: MediaQuery.of(context).size.width,
+                      child: MapListView(mapsList: mapsList),
+                    ),
+                    const GridOverlayMapWrapper(),
+                  ],
+                ),
               );
             } else {
               return const Loading();

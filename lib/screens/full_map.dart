@@ -1,4 +1,4 @@
-import 'package:dnddmcompanion/widgets/images/draggable_map.dart';
+import 'package:dnddmcompanion/widgets/maps/draggable_map.dart';
 import 'package:dnddmcompanion/widgets/characters/small_character_row_list.dart';
 import 'package:flutter/material.dart';
 
