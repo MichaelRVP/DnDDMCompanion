@@ -1,10 +1,8 @@
 import 'package:dnddmcompanion/main.dart';
-import 'package:dnddmcompanion/models/providers/selected_image_notifier.dart';
 import 'package:dnddmcompanion/widgets/loading.dart';
 import 'package:dnddmcompanion/widgets/maps/grid_map_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:provider/provider.dart';
 
 class GridOverlayMapWrapper extends ConsumerWidget {
   const GridOverlayMapWrapper({Key? key}) : super(key: key);
