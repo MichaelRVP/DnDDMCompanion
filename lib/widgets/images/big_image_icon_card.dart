@@ -1,10 +1,10 @@
-import 'package:dnddmcompanion/models/character.dart';
 import 'package:flutter/material.dart';
 
-class ImageIconCard extends StatelessWidget {
+class BigImageIconCard extends StatelessWidget {
   final String imageString;
 
-  const ImageIconCard({required this.imageString, Key? key}) : super(key: key);
+  const BigImageIconCard({required this.imageString, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,4 @@
 import 'package:dnddmcompanion/models/attribute.dart';
-import 'package:flutter/material.dart';
 
 class Character {
   String firstName;

@@ -1,7 +1,7 @@
 import 'package:dnddmcompanion/models/character.dart';
 import 'package:dnddmcompanion/screens/full_map.dart';
 import 'package:dnddmcompanion/screens/full_page_character_edit.dart';
-import 'package:dnddmcompanion/widgets/characters/character_detail.dart';
+import 'package:dnddmcompanion/screens/map_importer.dart';
 import 'package:dnddmcompanion/widgets/inputs/gradient_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -36,9 +36,20 @@ class HomeScreen extends StatelessWidget {
                 inputString: 'See Map',
                 tapFunction: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => FullMap(
+                    builder: (context) => const FullMap(
                       imageString: 'images/maps/neverWinterMap.png',
                     ),
+                  ));
+                },
+              ),
+            ),
+            SizedBox(
+              width: 350,
+              child: GradientTextButton(
+                inputString: 'Import Map',
+                tapFunction: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MapImporter(),
                   ));
                 },
               ),

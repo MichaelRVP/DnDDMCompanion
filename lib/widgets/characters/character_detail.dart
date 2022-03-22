@@ -1,6 +1,6 @@
 import 'package:dnddmcompanion/models/character.dart';
 import 'package:dnddmcompanion/widgets/characters/attribute_grid.dart';
-import 'package:dnddmcompanion/widgets/images/image_icon_card.dart';
+import 'package:dnddmcompanion/widgets/images/big_image_icon_card.dart';
 import 'package:dnddmcompanion/widgets/inputs/round_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +48,7 @@ class _CharacterDetailState extends State<CharacterDetail> {
                 SizedBox(
                   width: constraints.maxWidth * .4,
                   height: constraints.maxWidth * .4,
-                  child: ImageIconCard(
+                  child: BigImageIconCard(
                       imageString: widget.character.icon ??
                           widget.character.defaultCharacter().icon!),
                 ),

@@ -29,7 +29,7 @@ class _FullMapState extends State<FullMap> {
             SizedBox(
               height: MediaQuery.of(context).size.height * .25,
               width: MediaQuery.of(context).size.width * .8,
-              child: Center(
+              child: const Center(
                 child: SmallCharacterRowList(),
               ),
             ),

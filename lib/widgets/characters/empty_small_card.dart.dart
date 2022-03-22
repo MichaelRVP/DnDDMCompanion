@@ -1,5 +1,3 @@
-import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/widgets/images/small_image_icon_card.dart';
 import 'package:flutter/material.dart';
 
 class EmptySmallCard extends StatelessWidget {

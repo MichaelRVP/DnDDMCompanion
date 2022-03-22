@@ -16,6 +16,7 @@ class RoundTextField extends StatelessWidget {
   final void Function(String)? onChanged;
   final String? dividerText;
 
+  // ignore: use_key_in_widget_constructors
   const RoundTextField({
     this.labelText = "",
     this.controller,

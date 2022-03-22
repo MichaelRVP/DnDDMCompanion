@@ -1,4 +1,3 @@
-import 'package:dnddmcompanion/models/character.dart';
 import 'package:flutter/material.dart';
 
 class SmallImageIconCard extends StatelessWidget {
