@@ -1,13 +1,11 @@
 import 'package:dnddmcompanion/models/providers/selected_image_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' as rp;
 
 import 'src/app.dart';
 
 void main() async {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(
-      create: (_) => SelectedImageNotifier(),
-    ),
-  ], child: const MyApp()));
+  runApp(const rp.ProviderScope(child: MyApp()));
 }
+
+final selectedImageNotifier = rp.StateProvider((ref) => '');

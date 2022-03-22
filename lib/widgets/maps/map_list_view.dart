@@ -1,9 +1,9 @@
-import 'package:dnddmcompanion/models/providers/selected_image_notifier.dart';
+import 'package:dnddmcompanion/main.dart';
 import 'package:dnddmcompanion/widgets/images/small_image_icon_card.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MapListView extends StatelessWidget {
+class MapListView extends ConsumerWidget {
   const MapListView({
     Key? key,
     required this.mapsList,
@@ -12,7 +12,7 @@ class MapListView extends StatelessWidget {
   final List<String> mapsList;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return LayoutBuilder(
       builder: ((context, constraints) {
         return Column(
@@ -40,8 +40,8 @@ class MapListView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Provider.of<SelectedImageNotifier>(context, listen: false)
-                          .setImage(mapsList[index]);
+                      ref.read(selectedImageNotifier.notifier).state =
+                          mapsList[index];
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
