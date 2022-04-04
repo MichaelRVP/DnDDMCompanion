@@ -18,7 +18,9 @@ class _GridMapOverlayState extends State<GridMapOverlay> {
   late int totalWidthCells;
   late int totalHeightCells;
   late double topCellPadding;
+  late double bottomCellPadding;
   late double leftCellPadding;
+  late double rightCellPadding;
   late double cellSizing;
 
   @override
@@ -28,6 +30,8 @@ class _GridMapOverlayState extends State<GridMapOverlay> {
     totalWidthCells = 66;
     topCellPadding = 50;
     leftCellPadding = 16;
+    rightCellPadding = 16;
+    bottomCellPadding = 50;
     cellSizing = 10;
   }
 
@@ -35,14 +39,14 @@ class _GridMapOverlayState extends State<GridMapOverlay> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: ((context, constraints) {
-        return SizedBox(
-          width: constraints.maxWidth * .8,
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             children: [
               InteractiveViewer(
                 boundaryMargin: const EdgeInsets.all(80),
                 minScale: 0.5,
-                maxScale: 4,
+                maxScale: 6,
                 child: Stack(
                   children: [
                     Container(
@@ -58,18 +62,20 @@ class _GridMapOverlayState extends State<GridMapOverlay> {
                           borderRadius: BorderRadius.circular(20.0),
                           child: Image.asset(
                             widget.imageString,
-                            height: 700,
-                            width: constraints.maxWidth * .8,
+                            height: constraints.maxHeight * .9,
+                            width: constraints.maxWidth,
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      width: constraints.maxWidth * .8,
-                      height: 732,
+                      height: constraints.maxHeight * .9,
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(leftCellPadding,
-                            topCellPadding, leftCellPadding, topCellPadding),
+                        padding: EdgeInsets.fromLTRB(
+                            leftCellPadding,
+                            topCellPadding,
+                            rightCellPadding,
+                            bottomCellPadding),
                         child: GridView.count(
                           crossAxisCount: totalWidthCells,
                           childAspectRatio: 1,
@@ -110,7 +116,7 @@ class _GridMapOverlayState extends State<GridMapOverlay> {
                       icon: const Icon(Icons.remove),
                     ),
                     Text('$topCellPadding'),
-                    const Text(' Top Padding'),
+                    const Text(' Top'),
                     IconButton(
                       onPressed: () {
                         setState(() {
@@ -131,7 +137,7 @@ class _GridMapOverlayState extends State<GridMapOverlay> {
                       icon: const Icon(Icons.remove),
                     ),
                     Text('$leftCellPadding'),
-                    const Text(' Left Padding'),
+                    const Text(' Left'),
                     IconButton(
                       onPressed: () {
                         setState(() {

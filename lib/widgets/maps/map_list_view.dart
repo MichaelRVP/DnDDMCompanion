@@ -15,48 +15,50 @@ class MapListView extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     return LayoutBuilder(
       builder: ((context, constraints) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Colors.white.withOpacity(.8)),
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Select a map to import',
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),
-                )),
-            SizedBox(
-              height: constraints.maxHeight * .8,
-              child: ListView.builder(
-                itemCount: mapsList.length,
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      ref.read(selectedImageNotifier.notifier).state =
-                          mapsList[index];
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        width: 250,
-                        child: SmallImageIconCard(
-                          imageString: mapsList[index],
-                        ),
+        return SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white.withOpacity(.8)),
+                  child: const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Select a map to import',
+                      style: TextStyle(
+                        color: Colors.black,
                       ),
                     ),
-                  );
-                },
-              ),
-            )
-          ],
+                  )),
+              SizedBox(
+                height: constraints.maxHeight * .8,
+                child: ListView.builder(
+                  itemCount: mapsList.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        ref.read(selectedImageNotifier.notifier).state =
+                            mapsList[index];
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          width: constraints.maxWidth * .8,
+                          height: constraints.maxHeight * .3,
+                          child: SmallImageIconCard(
+                            imageString: mapsList[index],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              )
+            ],
+          ),
         );
       }),
     );

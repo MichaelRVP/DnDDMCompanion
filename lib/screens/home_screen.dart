@@ -1,7 +1,7 @@
 import 'package:dnddmcompanion/models/character.dart';
 import 'package:dnddmcompanion/screens/full_map.dart';
 import 'package:dnddmcompanion/screens/full_page_character_edit.dart';
-import 'package:dnddmcompanion/screens/map_importer.dart';
+import 'package:dnddmcompanion/screens/master_map_viewer.dart';
 import 'package:dnddmcompanion/widgets/inputs/gradient_text_button.dart';
 import 'package:flutter/material.dart';
 
@@ -46,10 +46,10 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               width: 350,
               child: GradientTextButton(
-                inputString: 'Import Map',
+                inputString: 'Master Map Viewer',
                 tapFunction: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MapImporter(),
+                    builder: (context) => const MasetMapViewer(),
                   ));
                 },
               ),

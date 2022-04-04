@@ -3,12 +3,15 @@ import 'package:dnddmcompanion/widgets/maps/wrapper/grid_overlay_map_wrapper.dar
 import 'package:dnddmcompanion/widgets/maps/map_list_view.dart';
 import 'package:dnddmcompanion/widgets/loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MapImporter extends StatelessWidget {
-  const MapImporter({Key? key}) : super(key: key);
+import '../main.dart';
+
+class MasetMapViewer extends ConsumerWidget {
+  const MasetMapViewer({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final DataServices ds = DataServices();
 
     return Scaffold(
@@ -20,15 +23,23 @@ class MapImporter extends StatelessWidget {
               List<String> mapsList = snapshot.data!;
 
               return SingleChildScrollView(
-                child: Column(
+                scrollDirection: Axis.horizontal,
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 300,
-                      width: MediaQuery.of(context).size.width,
-                      child: MapListView(mapsList: mapsList),
+                    ref.watch(selectedImageNotifier) == ''
+                        ? SizedBox(
+                            width: MediaQuery.of(context).size.width * .2,
+                            child: MapListView(mapsList: mapsList),
+                          )
+                        : Container(),
+                    Center(
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * .9,
+                        width: MediaQuery.of(context).size.width,
+                        child: const GridOverlayMapWrapper(),
+                      ),
                     ),
-                    const GridOverlayMapWrapper(),
                   ],
                 ),
               );
