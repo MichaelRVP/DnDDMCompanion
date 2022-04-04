@@ -1,29 +1,18 @@
+import 'package:dnddmcompanion/models/grid_sizing.dart';
+import 'package:dnddmcompanion/models/providers/grid_sizing_notifier.dart';
 import 'package:dnddmcompanion/widgets/maps/overlay_control_bundle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class OverlayControlsRow extends ConsumerWidget {
-  final int totalWidthCells;
-  final int totalHeightCells;
-  final double topCellPadding;
-  final double bottomCellPadding;
-  final double leftCellPadding;
-  final double rightCellPadding;
-  final double cellSizing;
-
   const OverlayControlsRow({
     Key? key,
-    required this.bottomCellPadding,
-    required this.cellSizing,
-    required this.leftCellPadding,
-    required this.rightCellPadding,
-    required this.topCellPadding,
-    required this.totalHeightCells,
-    required this.totalWidthCells,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final GridSizing gridSizing = ref.watch(gridSizingNotifierProvider);
+
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -31,29 +20,25 @@ class OverlayControlsRow extends ConsumerWidget {
       child: Row(
         children: [
           OverlayControlBundle(
-            incrementer: topCellPadding,
             hintText: 'Top',
           ),
           const Spacer(),
           OverlayControlBundle(
-            incrementer: bottomCellPadding,
             hintText: 'Bottom',
           ),
           const Spacer(),
           OverlayControlBundle(
-            incrementer: leftCellPadding,
             hintText: 'Left',
           ),
           const Spacer(),
           OverlayControlBundle(
-            incrementer: rightCellPadding,
             hintText: 'Right',
           ),
           const Spacer(),
           IconButton(
             onPressed: () {
               setState(() {
-                totalHeightCells--;
+                widget.totalHeightCells--;
               });
             },
             icon: const Icon(Icons.remove),
