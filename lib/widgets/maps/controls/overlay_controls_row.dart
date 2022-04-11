@@ -1,4 +1,3 @@
-import 'package:dnddmcompanion/main.dart';
 import 'package:dnddmcompanion/screens/grid_map_game.dart';
 import 'package:dnddmcompanion/widgets/maps/controls/overlay_control_bundle.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +54,6 @@ class OverlayControlsRow extends ConsumerWidget {
           const Spacer(),
           IconButton(
             onPressed: () {
-              ref.read(savedGridSizeNotifier.notifier).state = true;
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => const GridMapGame(),
               ));
