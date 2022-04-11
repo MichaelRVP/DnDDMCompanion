@@ -1,4 +1,6 @@
-import 'package:dnddmcompanion/widgets/maps/overlay_control_bundle.dart';
+import 'package:dnddmcompanion/main.dart';
+import 'package:dnddmcompanion/screens/grid_map_game.dart';
+import 'package:dnddmcompanion/widgets/maps/controls/overlay_control_bundle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,7 +54,12 @@ class OverlayControlsRow extends ConsumerWidget {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              ref.read(savedGridSizeNotifier.notifier).state = true;
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const GridMapGame(),
+              ));
+            },
             icon: const Icon(
               Icons.save,
             ),

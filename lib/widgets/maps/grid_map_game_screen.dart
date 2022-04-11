@@ -1,22 +1,21 @@
+import 'package:dnddmcompanion/main.dart';
 import 'package:dnddmcompanion/models/grid_sizing.dart';
 import 'package:dnddmcompanion/models/providers/grid_sizing_notifier.dart';
-import 'package:dnddmcompanion/widgets/maps/overlay_controls_row.dart';
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GridMapOverlay extends ConsumerWidget {
-  final String imageString;
-
-  const GridMapOverlay({
-    required this.imageString,
+class GridMapGame extends ConsumerWidget {
+  const GridMapGame({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     GridSizing gridSizing = ref.watch(gridSizingNotifierProvider);
+
+    final String imageString = ref.watch(selectedImageNotifier);
 
     return LayoutBuilder(
       builder: ((context, constraints) {
@@ -46,14 +45,14 @@ class GridMapOverlay extends ConsumerWidget {
                             borderRadius: BorderRadius.circular(20.0),
                             child: Image.asset(
                               imageString,
-                              height: constraints.maxHeight * .8,
+                              height: constraints.maxHeight,
                               width: constraints.maxWidth,
                             ),
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: constraints.maxHeight * .8,
+                        height: constraints.maxHeight,
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(
                               gridSizing.leftCellPadding,
@@ -85,10 +84,6 @@ class GridMapOverlay extends ConsumerWidget {
                     ],
                   ),
                 ),
-                const Divider(
-                  color: Colors.blue,
-                ),
-                const OverlayControlsRow(),
               ],
             ),
           ),

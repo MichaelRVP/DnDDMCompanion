@@ -1,5 +1,5 @@
 import 'package:dnddmcompanion/services/data_services.dart';
-import 'package:dnddmcompanion/widgets/maps/wrapper/grid_overlay_map_wrapper.dart';
+import 'package:dnddmcompanion/widgets/maps/wrapper/grid_overlay_import_wrapper.dart';
 import 'package:dnddmcompanion/widgets/maps/map_list_view.dart';
 import 'package:dnddmcompanion/widgets/loading.dart';
 import 'package:flutter/material.dart';
@@ -33,12 +33,8 @@ class MasetMapViewer extends ConsumerWidget {
                             child: MapListView(mapsList: mapsList),
                           )
                         : Container(),
-                    Center(
-                      child: SizedBox(
-                        height: MediaQuery.of(context).size.height,
-                        width: MediaQuery.of(context).size.width,
-                        child: const GridOverlayMapWrapper(),
-                      ),
+                    const Center(
+                      child: GridOverlayMapWrapper(),
                     ),
                   ],
                 ),

@@ -23,36 +23,39 @@ class OverlayControlBundle extends ConsumerWidget {
         TextEditingController(text: incrementer.toString());
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Column(
-          children: [
-            IconButton(
-              onPressed: () {
-                if (incrementer > 0) {
+        FittedBox(
+          child: Column(
+            children: [
+              IconButton(
+                onPressed: () {
+                  if (incrementer > 0) {
+                    ref
+                        .read(gridSizingNotifierProvider.notifier)
+                        .updateGrid(gridSizing.updateSizeFromStringDouble(
+                          gridSizeText: gridSizeOption,
+                          newValue: incrementer - 1,
+                        ));
+                  }
+                },
+                icon: const Icon(Icons.remove),
+              ),
+              IconButton(
+                onPressed: () {
                   ref
                       .read(gridSizingNotifierProvider.notifier)
                       .updateGrid(gridSizing.updateSizeFromStringDouble(
                         gridSizeText: gridSizeOption,
-                        newValue: incrementer - 1,
+                        newValue: incrementer + 1,
                       ));
-                }
-              },
-              icon: const Icon(Icons.remove),
-            ),
-            IconButton(
-              onPressed: () {
-                ref
-                    .read(gridSizingNotifierProvider.notifier)
-                    .updateGrid(gridSizing.updateSizeFromStringDouble(
-                      gridSizeText: gridSizeOption,
-                      newValue: incrementer + 1,
-                    ));
-              },
-              icon: const Icon(
-                Icons.add,
+                },
+                icon: const Icon(
+                  Icons.add,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         SizedBox(
           width: 50,
@@ -68,6 +71,7 @@ class OverlayControlBundle extends ConsumerWidget {
                   ));
             },
             child: TextFormField(
+              textAlign: TextAlign.center,
               controller: textEditingController,
               validator: (value) {
                 if (double.tryParse(value ?? '') == null) {

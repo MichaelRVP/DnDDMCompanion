@@ -8,3 +8,5 @@ void main() async {
 }
 
 final selectedImageNotifier = rp.StateProvider((ref) => '');
+
+final savedGridSizeNotifier = rp.StateProvider((ref) => false);
