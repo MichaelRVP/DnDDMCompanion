@@ -21,8 +21,8 @@ class DraggableCharacterCard extends StatelessWidget {
         totalCharacters: totalCharacters,
       ),
       feedback: SizedBox(
-        width: 150,
-        height: 150,
+        width: 50,
+        height: 50,
         child: Center(
           child: SmallImageIconCard(
             imageString: character.icon!,

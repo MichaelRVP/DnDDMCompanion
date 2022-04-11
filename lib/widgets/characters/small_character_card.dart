@@ -61,19 +61,24 @@ class _SmallCharacterCardState extends State<SmallCharacterCard> {
                         SmallImageIconCard(imageString: widget.character.icon!),
                   ),
                   const Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          '${widget.character.firstName} ${widget.character.lastName}',
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 32,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Flexible(
+                          child: FittedBox(
+                            child: Text(
+                              '${widget.character.firstName} ${widget.character.lastName}',
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 32,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   const Spacer(),
                 ],
