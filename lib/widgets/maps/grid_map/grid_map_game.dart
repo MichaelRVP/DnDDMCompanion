@@ -64,12 +64,11 @@ class GridMapGame extends ConsumerWidget {
                             childAspectRatio: 1,
                             children: List.generate(
                                 gridSizing.cellTotal.toInt(), (index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  //TODO get the x y from this
-                                  print(index);
-                                },
-                                child: const MapDragTarget(),
+                              return MapDragTarget(
+                                xCord:
+                                    index % gridSizing.totalWidthCells.toInt(),
+                                yCord:
+                                    index ~/ gridSizing.totalWidthCells.toInt(),
                               );
                             }),
                           ),

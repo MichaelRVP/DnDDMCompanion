@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MapDragTarget extends ConsumerWidget {
-  const MapDragTarget({Key? key}) : super(key: key);
+  final int xCord;
+  final int yCord;
+
+  const MapDragTarget({required this.xCord, required this.yCord, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return DragTarget(
-      onAccept: (Character character) {
-        print('here ${character.firstName}');
-      },
+      onAccept: (Character character) {},
       builder: ((context, candidateData, rejectedData) {
         return Container();
       }),
@@ -19,7 +21,7 @@ class MapDragTarget extends ConsumerWidget {
 }
 
 // Container(
-//             decoration: BoxDecoration(
-//                 color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
-//                     .withOpacity(.4)));
+//   decoration: BoxDecoration(
+//       color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
+//           .withOpacity(.4)));
 

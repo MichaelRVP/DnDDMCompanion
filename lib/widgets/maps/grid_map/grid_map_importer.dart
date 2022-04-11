@@ -65,8 +65,13 @@ class GridMapImporter extends ConsumerWidget {
                                 gridSizing.cellTotal.toInt(), (index) {
                               return GestureDetector(
                                 onTap: () {
-                                  //TODO get the x y from this
-                                  print(index);
+                                  int xCord = index %
+                                      gridSizing.totalWidthCells.toInt();
+
+                                  int yCord = index ~/
+                                      gridSizing.totalWidthCells.toInt();
+
+                                  print("$xCord, $yCord");
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
