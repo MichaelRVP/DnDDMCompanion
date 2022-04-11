@@ -1,8 +1,8 @@
 import 'package:dnddmcompanion/main.dart';
 import 'package:dnddmcompanion/models/grid_sizing.dart';
 import 'package:dnddmcompanion/models/providers/grid_sizing_notifier.dart';
+import 'package:dnddmcompanion/widgets/maps/map_drag_target.dart';
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -69,13 +69,7 @@ class GridMapGame extends ConsumerWidget {
                                   //TODO get the x y from this
                                   print(index);
                                 },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Color((math.Random().nextDouble() *
-                                                  0xFFFFFF)
-                                              .toInt())
-                                          .withOpacity(.4)),
-                                ),
+                                child: const MapDragTarget(),
                               );
                             }),
                           ),

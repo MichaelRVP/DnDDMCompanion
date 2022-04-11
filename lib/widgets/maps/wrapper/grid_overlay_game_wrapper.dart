@@ -1,7 +1,7 @@
 import 'package:dnddmcompanion/main.dart';
 import 'package:dnddmcompanion/widgets/characters/small_character_row_list.dart';
 import 'package:dnddmcompanion/widgets/loading.dart';
-import 'package:dnddmcompanion/widgets/maps/grid_map_game_screen.dart';
+import 'package:dnddmcompanion/widgets/maps/grid_map/grid_map_game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

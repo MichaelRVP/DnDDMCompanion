@@ -16,7 +16,8 @@ class DraggableCharacterCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Draggable(
+    return Draggable<Character>(
+      data: character,
       childWhenDragging: EmptySmallCard(
         totalCharacters: totalCharacters,
       ),

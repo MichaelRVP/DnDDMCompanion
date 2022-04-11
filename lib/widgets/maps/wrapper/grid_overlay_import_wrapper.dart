@@ -1,7 +1,7 @@
 import 'package:dnddmcompanion/main.dart';
 import 'package:dnddmcompanion/widgets/loading.dart';
 import 'package:dnddmcompanion/widgets/maps/controls/overlay_controls_row.dart';
-import 'package:dnddmcompanion/widgets/maps/grid_map_importer.dart';
+import 'package:dnddmcompanion/widgets/maps/grid_map/grid_map_importer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
