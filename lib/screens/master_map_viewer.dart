@@ -35,7 +35,7 @@ class MasetMapViewer extends ConsumerWidget {
                         : Container(),
                     Center(
                       child: SizedBox(
-                        height: MediaQuery.of(context).size.height * .9,
+                        height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width,
                         child: const GridOverlayMapWrapper(),
                       ),

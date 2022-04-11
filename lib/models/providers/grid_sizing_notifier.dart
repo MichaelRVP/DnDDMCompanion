@@ -5,7 +5,7 @@ class GridSizingNotifier extends rp.StateNotifier<GridSizing> {
   GridSizingNotifier() : super(defaultGrid());
 
   // ignore: use_setters_to_change_properties
-  void updateOption(GridSizing gridSizing) {
+  void updateGrid(GridSizing gridSizing) {
     state = gridSizing;
   }
 }
