@@ -45,7 +45,7 @@ class Character {
         speed: 30,
         vision: 60,
         wisdom: 12,
-        icon: 'images/playerIcons/player3.png');
+        icon: 'assets/images/playerIcons/player3.png');
   }
 
   Character decouple(Character inputCharater) {
