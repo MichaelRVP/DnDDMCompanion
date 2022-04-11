@@ -1,8 +1,9 @@
 import 'package:dnddmcompanion/models/character.dart';
+import 'package:dnddmcompanion/widgets/characters/draggable_character_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MapDragTarget extends ConsumerWidget {
+class MapDragTarget extends ConsumerStatefulWidget {
   final int xCord;
   final int yCord;
 
@@ -10,11 +11,32 @@ class MapDragTarget extends ConsumerWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConsumerStatefulWidget> createState() => _MapDragTargetState();
+}
+
+class _MapDragTargetState extends ConsumerState<MapDragTarget> {
+  late Character gridCharacter;
+
+  @override
+  void initState() {
+    super.initState();
+
+    gridCharacter = Character().defaultCharacter();
+    gridCharacter.firstName = '';
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return DragTarget(
-      onAccept: (Character character) {},
+      onAccept: (Character character) {
+        setState(() {
+          gridCharacter = character;
+        });
+      },
       builder: ((context, candidateData, rejectedData) {
-        return Container();
+        return gridCharacter.firstName != ''
+            ? DraggableCharacterImage(character: gridCharacter)
+            : Container();
       }),
     );
   }
@@ -24,4 +46,3 @@ class MapDragTarget extends ConsumerWidget {
 //   decoration: BoxDecoration(
 //       color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
 //           .withOpacity(.4)));
-

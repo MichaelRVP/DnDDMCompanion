@@ -14,6 +14,8 @@ class Character {
   int initiative;
   int armorClass;
   String? icon;
+  int xCord;
+  int yCord;
 
   Character({
     this.firstName = '',
@@ -29,6 +31,8 @@ class Character {
     this.initiative = 0,
     this.armorClass = 0,
     this.icon,
+    this.xCord = 0,
+    this.yCord = 0,
   });
 
   Character defaultCharacter() {
