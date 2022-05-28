@@ -9,15 +9,17 @@ class GridSizing {
   final double leftCellPadding;
   final double rightCellPadding;
   final double cellTotal;
+  final Map<int, bool> wallMap;
 
   const GridSizing({
-    required this.totalWidthCells,
-    required this.totalHeightCells,
-    required this.topCellPadding,
-    required this.bottomCellPadding,
-    required this.leftCellPadding,
-    required this.rightCellPadding,
-    required this.cellTotal,
+    this.totalWidthCells = 66,
+    this.totalHeightCells = 50,
+    this.topCellPadding = 0,
+    this.bottomCellPadding = 0,
+    this.leftCellPadding = 308,
+    this.rightCellPadding = 308,
+    this.cellTotal = 2700,
+    this.wallMap = const {},
   });
 
   GridSizing copyWith({
@@ -28,6 +30,7 @@ class GridSizing {
     double? leftCellPadding,
     double? rightCellPadding,
     double? cellTotal,
+    Map<int, bool>? wallMap,
   }) {
     return GridSizing(
       totalWidthCells: totalWidthCells ?? this.totalWidthCells,
@@ -37,6 +40,7 @@ class GridSizing {
       leftCellPadding: leftCellPadding ?? this.leftCellPadding,
       rightCellPadding: rightCellPadding ?? this.rightCellPadding,
       cellTotal: cellTotal ?? this.cellTotal,
+      wallMap: wallMap ?? this.wallMap,
     );
   }
 
@@ -116,16 +120,4 @@ class GridSizing {
         }
     }
   }
-}
-
-GridSizing defaultGrid() {
-  return const GridSizing(
-    totalWidthCells: 66,
-    totalHeightCells: 50,
-    topCellPadding: 0,
-    bottomCellPadding: 0,
-    leftCellPadding: 264,
-    rightCellPadding: 264,
-    cellTotal: 2700,
-  );
 }
