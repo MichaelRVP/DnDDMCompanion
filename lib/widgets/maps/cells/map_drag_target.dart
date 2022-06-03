@@ -22,7 +22,7 @@ class _MapDragTargetState extends ConsumerState<MapDragTarget> {
   void initState() {
     super.initState();
 
-    gridCharacter = Character().defaultCharacter();
+    gridCharacter = Character();
     gridCharacter.firstName = '';
     gridCharacter.xCord = 3;
     gridCharacter.yCord = 31;
@@ -49,11 +49,7 @@ class _MapDragTargetState extends ConsumerState<MapDragTarget> {
               ? DraggableCharacterImage(character: gridCharacter)
               : InkWell(
                   onTap: () {
-                    gridCharacter.isInSight(
-                        widget.xCord,
-                        widget.yCord,
-                        ref.read(gridSizingNotifierProvider).wallMap,
-                        ref.read(gridSizingNotifierProvider).totalWidthCells);
+                    print("${widget.xCord} : ${widget.yCord}");
                   },
                 );
         }),

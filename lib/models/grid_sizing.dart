@@ -16,8 +16,8 @@ class GridSizing {
     this.totalHeightCells = 50,
     this.topCellPadding = 0,
     this.bottomCellPadding = 0,
-    this.leftCellPadding = 308,
-    this.rightCellPadding = 308,
+    this.leftCellPadding = 412,
+    this.rightCellPadding = 410,
     this.cellTotal = 2700,
     this.wallMap = const {
       1717: true,

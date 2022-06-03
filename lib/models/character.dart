@@ -32,8 +32,8 @@ class Character {
     this.initiative = 0,
     this.armorClass = 0,
     this.icon,
-    this.xCord = 0,
-    this.yCord = 0,
+    this.xCord = 3,
+    this.yCord = 31,
   });
 
   Character defaultCharacter() {
@@ -116,6 +116,8 @@ class Character {
   bool isInSight(
       int inputX, int inputY, Map<int, bool> wallMap, double totalWidth) {
     final int visionRadius = vision ~/ 5;
+    final Coordinate originCord = Coordinate(x: xCord, y: yCord);
+    final Coordinate checkCord = Coordinate(x: inputX, y: inputY);
 
     //get full possible vision box
     List<Coordinate> visionSquare = [];
@@ -123,8 +125,8 @@ class Character {
     for (int xI = 0; xI < (visionRadius * 2); xI++) {
       for (int yI = 0; yI < (visionRadius * 2); yI++) {
         visionSquare.add(Coordinate(
-            x: ((xCord - visionRadius) + xI).toInt(),
-            y: ((yCord - visionRadius) + yI).toInt()));
+            x: ((originCord.x - visionRadius) + xI).toInt(),
+            y: ((originCord.y - visionRadius) + yI).toInt()));
       }
     }
 
@@ -132,8 +134,8 @@ class Character {
     List<Coordinate> visionCircle = [];
 
     for (final Coordinate cord in visionSquare) {
-      final int xSquared = (cord.x - xCord) * (cord.x - xCord);
-      final int ySquared = (cord.y - yCord) * (cord.y - yCord);
+      final int xSquared = (cord.x - originCord.x) * (cord.x - originCord.x);
+      final int ySquared = (cord.y - originCord.y) * (cord.y - originCord.y);
       final int visionSqured = (visionRadius * visionRadius).toInt();
       if (xSquared + ySquared <= visionSqured) {
         visionCircle.add(Coordinate(x: cord.x, y: cord.y));
@@ -141,17 +143,37 @@ class Character {
     }
 
     //get vision map minus wall blockage
-    //get line fomula for origin to input cord
-    double m = (inputX - xCord) / (inputY - yCord);
-    double b = (inputY - (m * inputX));
 
-    //get all coords in the line of vision
     List<Coordinate> visionVectorList = [];
 
-    for (final Coordinate cord in visionCircle) {
-      //if it is an equality then add to the vector
-      if (cord.y == (m * cord.x) + b) {
-        visionVectorList.add(Coordinate(x: cord.x, y: cord.y));
+    if (const Coordinate(x: 3, y: 29).compareCords(checkCord)) {
+      print('here');
+      //print("${cord.y} == $mxplusb");
+    }
+
+    //get line fomula for origin to input cord
+    //can't divide by zero
+    if ((originCord.x - checkCord.x) != 0) {
+      double m = ((originCord.y - checkCord.y) / (originCord.x - checkCord.x))
+          .roundToDouble();
+      double b = (checkCord.y - (m * checkCord.x)).roundToDouble();
+
+      //get all coords in the line of vision
+
+      for (final Coordinate cord in visionCircle) {
+        int mxplusb = ((m * cord.x) + b).round();
+
+        //if it is an equality then add to the vector
+        if (cord.y == mxplusb) {
+          visionVectorList.addAll([Coordinate(x: cord.x, y: cord.y)]);
+        }
+      }
+    } else {
+      //this will give all cords above and below you
+      for (final Coordinate cord in visionCircle) {
+        if (cord.x == originCord.x) {
+          visionVectorList.addAll([Coordinate(x: cord.x, y: cord.y)]);
+        }
       }
     }
 
@@ -162,67 +184,72 @@ class Character {
     bool bufferRemoval2 = false;
 
     Map<Coordinate, bool> wallMapCoordinate = wallMap.map((index, wallBool) {
-      double xCord = index % totalWidth;
-      int yCord = index ~/ totalWidth;
+      double mapXCord = index % totalWidth;
+      int mapYCord = index ~/ totalWidth;
 
-      return MapEntry(Coordinate(x: xCord.toInt(), y: yCord), wallBool);
+      return MapEntry(Coordinate(x: mapXCord.toInt(), y: mapYCord), wallBool);
     });
 
-    //check from first to last
+    //check from mid to last
     for (final Coordinate cord in visionVectorList) {
       //if you pass origin stop checking
-      if (cord.x >= xCord && cord.y >= yCord) {
+      //TODO get this shit figured out
+      if (cord.x >= originCord.x && cord.y >= originCord.y) {
         break;
       }
 
-      //if there is a wall in the vector make buffere removal true
-      //if not just add in the bufer vision
-      if (cord.x == 6) {
-        print(cord.y);
-        if (cord.y == 31) {
-          print('here');
-        }
-        print('here');
-      }
-
-      Coordinate wallCord = wallMapCoordinate.keys.firstWhere(
-        (element) => element.x == cord.x && element.y == cord.y,
-        orElse: () => const Coordinate(x: 9999, y: 9999),
+      ///looks through the wall map and makes buffer removal true which
+      ///will make the loop break thus cutting off vision
+      wallMapCoordinate.entries.firstWhere(
+        (MapEntry<Coordinate, bool> element) {
+          if (cord.compareCords(element.key)) {
+            if (element.value) {
+              bufferRemoval1 = true;
+            }
+            return true;
+          } else {
+            return false;
+          }
+        },
+        orElse: () => const MapEntry(Coordinate(x: 99999, y: 99999), false),
       );
 
-      var wallValue = wallMapCoordinate.values;
-
-      if (wallCord.x != 9999 && wallCord.y != 9999) {
-        //if wall value is true don't add in buffer list
-        print(wallMapCoordinate[cord]);
-        if (wallMapCoordinate[cord]!) {
-          bufferRemoval1 = true;
-          break;
-        } else {
-          bufferVision1.add(cord);
-        }
+      //if wall value is true don't add in buffer list
+      if (bufferRemoval1) {
+        bufferVision1.add(cord);
+        break;
       } else {
         bufferVision1.add(cord);
       }
     }
 
-    //check from last to first
+    //check from first to mid
     for (final Coordinate cord in visionVectorList.reversed) {
       //if you pass origin stop checking
-      if (cord.x <= xCord && cord.y <= yCord) {
+      if (cord.x <= originCord.x && cord.y <= originCord.y) {
         break;
       }
 
-      //if there is a wall in the vector make buffere removal true
-      //if not just add in the bufer vision
-      if (wallMapCoordinate.containsKey(cord)) {
-        //if wall value is true don't add in buffer list
-        if (wallMapCoordinate[cord]!) {
-          bufferRemoval2 = true;
-          break;
-        } else {
-          bufferVision2.add(cord);
-        }
+      ///looks through the wall map and makes buffer removal true which
+      ///will make the loop break thus cutting off vision
+      wallMapCoordinate.entries.firstWhere(
+        (MapEntry<Coordinate, bool> element) {
+          if (cord.compareCords(element.key)) {
+            if (element.value) {
+              bufferRemoval2 = true;
+            }
+            return true;
+          } else {
+            return false;
+          }
+        },
+        orElse: () => const MapEntry(Coordinate(x: 99999, y: 99999), false),
+      );
+
+      //if wall value is true don't add in buffer list
+      if (bufferRemoval2) {
+        bufferVision2.add(cord);
+        break;
       } else {
         bufferVision2.add(cord);
       }
@@ -231,18 +258,18 @@ class Character {
     //if the either buffer vision is true and it contains this cord
     if (bufferRemoval1) {
       for (final Coordinate cord in bufferVision1) {
-        visionCircle.removeWhere((element) => element == cord);
+        visionCircle.removeWhere((element) => cord.compareCords(element));
       }
     }
 
     if (bufferRemoval2) {
       for (final Coordinate cord in bufferVision2) {
-        visionCircle.removeWhere((element) => element == cord);
+        visionCircle.removeWhere((element) => cord.compareCords(element));
       }
     }
 
-    int index = visionCircle
-        .indexWhere((element) => element.x == inputX && element.y == inputY);
+    int index = visionCircle.indexWhere((element) =>
+        Coordinate(x: checkCord.x, y: checkCord.y).compareCords(element));
 
     if (index != -1) {
       return true;
