@@ -146,6 +146,8 @@ class Character {
 
     List<Coordinate> visionVectorList = [];
 
+    List<Coordinate> areaVision = [];
+
     if (const Coordinate(x: 3, y: 29).compareCords(checkCord)) {
       print('here');
       //print("${cord.y} == $mxplusb");
@@ -178,24 +180,25 @@ class Character {
     }
 
     //travel through vision vector till obstruction (origin is current coords)
-    List<Coordinate> bufferVision1 = [];
-    List<Coordinate> bufferVision2 = [];
-    bool bufferRemoval1 = false;
-    bool bufferRemoval2 = false;
+    bool wall1 = false;
+    bool wall2 = false;
 
     Map<Coordinate, bool> wallMapCoordinate = wallMap.map((index, wallBool) {
-      double mapXCord = index % totalWidth;
+      int mapXCord = (index % totalWidth).round();
       int mapYCord = index ~/ totalWidth;
 
-      return MapEntry(Coordinate(x: mapXCord.toInt(), y: mapYCord), wallBool);
+      return MapEntry(Coordinate(x: mapXCord, y: mapYCord), wallBool);
     });
 
     //check from mid to last
     for (final Coordinate cord in visionVectorList) {
       //if you pass origin stop checking
-      //TODO get this shit figured out
-      if (cord.x >= originCord.x && cord.y >= originCord.y) {
-        break;
+      if (cord.x < originCord.x) {
+        continue;
+      }
+
+      if (cord.x == originCord.x && cord.y <= originCord.y) {
+        continue;
       }
 
       ///looks through the wall map and makes buffer removal true which
@@ -204,9 +207,11 @@ class Character {
         (MapEntry<Coordinate, bool> element) {
           if (cord.compareCords(element.key)) {
             if (element.value) {
-              bufferRemoval1 = true;
+              wall1 = true;
+              return true;
+            } else {
+              return false;
             }
-            return true;
           } else {
             return false;
           }
@@ -215,19 +220,22 @@ class Character {
       );
 
       //if wall value is true don't add in buffer list
-      if (bufferRemoval1) {
-        bufferVision1.add(cord);
+      if (wall1) {
         break;
       } else {
-        bufferVision1.add(cord);
+        areaVision.add(cord);
       }
     }
 
-    //check from first to mid
+    //check from first to mid (via reversed list)
     for (final Coordinate cord in visionVectorList.reversed) {
       //if you pass origin stop checking
-      if (cord.x <= originCord.x && cord.y <= originCord.y) {
-        break;
+      if (cord.x > originCord.x) {
+        continue;
+      }
+
+      if (cord.x == originCord.x && cord.y >= originCord.y) {
+        continue;
       }
 
       ///looks through the wall map and makes buffer removal true which
@@ -236,9 +244,11 @@ class Character {
         (MapEntry<Coordinate, bool> element) {
           if (cord.compareCords(element.key)) {
             if (element.value) {
-              bufferRemoval2 = true;
+              wall2 = true;
+              return true;
+            } else {
+              return false;
             }
-            return true;
           } else {
             return false;
           }
@@ -247,28 +257,27 @@ class Character {
       );
 
       //if wall value is true don't add in buffer list
-      if (bufferRemoval2) {
-        bufferVision2.add(cord);
+      if (wall2) {
         break;
       } else {
-        bufferVision2.add(cord);
+        areaVision.add(cord);
       }
     }
 
     //if the either buffer vision is true and it contains this cord
-    if (bufferRemoval1) {
-      for (final Coordinate cord in bufferVision1) {
-        visionCircle.removeWhere((element) => cord.compareCords(element));
-      }
-    }
+    // if (bufferRemoval1) {
+    //   for (final Coordinate cord in bufferVision1) {
+    //     visionCircle.removeWhere((element) => cord.compareCords(element));
+    //   }
+    // }
 
-    if (bufferRemoval2) {
-      for (final Coordinate cord in bufferVision2) {
-        visionCircle.removeWhere((element) => cord.compareCords(element));
-      }
-    }
+    // if (bufferRemoval2) {
+    //   for (final Coordinate cord in bufferVision2) {
+    //     visionCircle.removeWhere((element) => cord.compareCords(element));
+    //   }
+    // }
 
-    int index = visionCircle.indexWhere((element) =>
+    int index = areaVision.indexWhere((element) =>
         Coordinate(x: checkCord.x, y: checkCord.y).compareCords(element));
 
     if (index != -1) {
