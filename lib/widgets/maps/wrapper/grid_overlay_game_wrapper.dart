@@ -1,4 +1,5 @@
 import 'package:dnddmcompanion/main.dart';
+import 'package:dnddmcompanion/widgets/characters/small_character_row_list.dart';
 import 'package:dnddmcompanion/widgets/loading.dart';
 import 'package:dnddmcompanion/widgets/maps/grid_map/grid_map_game.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,15 @@ class GridOverlayGameWrapper extends ConsumerWidget {
     if (imageString != '') {
       return Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: const [
-          Flexible(child: GridMapGame()),
+        children: [
+          SizedBox(
+              height: MediaQuery.of(context).size.height * .7,
+              width: MediaQuery.of(context).size.width,
+              child: const GridMapGame()),
+          SizedBox(
+              height: MediaQuery.of(context).size.height * .15,
+              width: MediaQuery.of(context).size.width,
+              child: const SmallCharacterRowList()),
         ],
       );
     } else {

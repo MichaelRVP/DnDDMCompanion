@@ -1,4 +1,5 @@
 import 'package:dnddmcompanion/models/character.dart';
+import 'package:dnddmcompanion/models/providers/grid_sizing_notifier.dart';
 import 'package:dnddmcompanion/widgets/characters/draggable_character_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -23,21 +24,40 @@ class _MapDragTargetState extends ConsumerState<MapDragTarget> {
 
     gridCharacter = Character().defaultCharacter();
     gridCharacter.firstName = '';
+    gridCharacter.xCord = 3;
+    gridCharacter.yCord = 31;
   }
 
   @override
   Widget build(BuildContext context) {
-    return DragTarget(
-      onAccept: (Character character) {
-        setState(() {
-          gridCharacter = character;
-        });
-      },
-      builder: ((context, candidateData, rejectedData) {
-        return gridCharacter.firstName != ''
-            ? DraggableCharacterImage(character: gridCharacter)
-            : Container();
-      }),
+    return Container(
+      color: gridCharacter.isInSight(
+              widget.xCord,
+              widget.yCord,
+              ref.read(gridSizingNotifierProvider).wallMap,
+              ref.read(gridSizingNotifierProvider).totalWidthCells)
+          ? Colors.black.withOpacity(0)
+          : Colors.black.withOpacity(.3),
+      child: DragTarget(
+        onAccept: (Character character) {
+          setState(() {
+            gridCharacter = character;
+          });
+        },
+        builder: ((context, candidateData, rejectedData) {
+          return gridCharacter.firstName != ''
+              ? DraggableCharacterImage(character: gridCharacter)
+              : InkWell(
+                  onTap: () {
+                    gridCharacter.isInSight(
+                        widget.xCord,
+                        widget.yCord,
+                        ref.read(gridSizingNotifierProvider).wallMap,
+                        ref.read(gridSizingNotifierProvider).totalWidthCells);
+                  },
+                );
+        }),
+      ),
     );
   }
 }

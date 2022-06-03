@@ -1,4 +1,4 @@
-import 'package:dnddmcompanion/widgets/maps/grid_map/grid_map_game.dart';
+import 'package:dnddmcompanion/screens/grid_map_game_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +20,7 @@ class WallSaveRow extends ConsumerWidget {
           IconButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const GridMapGame(),
+                builder: (context) => const GridMapGameScreen(),
               ));
             },
             icon: const Icon(

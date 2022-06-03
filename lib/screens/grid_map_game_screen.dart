@@ -2,8 +2,8 @@ import 'package:dnddmcompanion/widgets/maps/wrapper/grid_overlay_game_wrapper.da
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GridMapGame extends ConsumerWidget {
-  const GridMapGame({Key? key}) : super(key: key);
+class GridMapGameScreen extends ConsumerWidget {
+  const GridMapGameScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
