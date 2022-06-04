@@ -32,8 +32,8 @@ class Character {
     this.initiative = 0,
     this.armorClass = 0,
     this.icon,
-    this.xCord = 3,
-    this.yCord = 31,
+    this.xCord = 0,
+    this.yCord = 0,
   });
 
   Character defaultCharacter() {
@@ -69,6 +69,47 @@ class Character {
       wisdom: inputCharater.wisdom,
       icon: inputCharater.icon,
     );
+  }
+
+  Character shannon() {
+    return Character(
+        firstName: 'EVELYNA',
+        icon: 'assets/images/playerIcons/shannon_export.png');
+  }
+
+  Character tori() {
+    return Character(
+        firstName: 'Yuzo', icon: 'assets/images/playerIcons/tori_export.png');
+  }
+
+  Character jackson() {
+    return Character(
+        firstName: 'Ilofyr',
+        icon: 'assets/images/playerIcons/jackson_export.png');
+  }
+
+  Character goodDwarf() {
+    return Character(
+        firstName: 'DwarfGood',
+        icon: 'assets/images/enemyIcons/rock_dwarf_recluse_good.png');
+  }
+
+  Character badDwarf() {
+    return Character(
+        firstName: 'DwarfBad',
+        icon: 'assets/images/enemyIcons/rock_dwarf_recluse_bad.png');
+  }
+
+  Character kingDwarf() {
+    return Character(
+        firstName: 'DwarfKing',
+        icon: 'assets/images/enemyIcons/rock_dwarf_recluse_king.png');
+  }
+
+  Character mimicDwarf() {
+    return Character(
+        firstName: 'Mimic',
+        icon: 'assets/images/enemyIcons/rock_dwarf_recluse_mimic.png');
   }
 
   List<Attribute> getAttributeList(Character inputCharater) {

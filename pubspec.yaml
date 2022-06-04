@@ -32,3 +32,4 @@ flutter:
     - assets/images/
     - assets/images/maps/
     - assets/images/playerIcons/
+    - assets/images/enemyIcons/

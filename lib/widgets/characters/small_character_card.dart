@@ -56,31 +56,31 @@ class _SmallCharacterCardState extends State<SmallCharacterCard> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: constraints.maxHeight * .6,
+                    height: constraints.maxHeight * .9,
                     child:
                         SmallImageIconCard(imageString: widget.character.icon!),
                   ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Flexible(
-                          child: FittedBox(
-                            child: Text(
-                              '${widget.character.firstName} ${widget.character.lastName}',
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 32,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Spacer(),
+                  // const Spacer(),
+                  // Padding(
+                  //   padding: const EdgeInsets.all(8.0),
+                  //   child: Row(
+                  //     mainAxisAlignment: MainAxisAlignment.center,
+                  //     children: [
+                  //       Flexible(
+                  //         child: FittedBox(
+                  //           child: Text(
+                  //             '${widget.character.firstName} ${widget.character.lastName}',
+                  //             style: const TextStyle(
+                  //               color: Colors.black,
+                  //               fontSize: 32,
+                  //             ),
+                  //           ),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const Spacer(),
                 ],
               ),
             ),
