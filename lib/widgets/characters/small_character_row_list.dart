@@ -25,8 +25,8 @@ class _SmallCharacterRowListState extends State<SmallCharacterRowList> {
       Character().tori(),
       Character().jackson(),
       Character().thomas(),
+      Character().jillian(),
       Character().box(),
-      Character().defaultCharacter()
     ];
 
     List<Character> enemies = [
@@ -34,6 +34,8 @@ class _SmallCharacterRowListState extends State<SmallCharacterRowList> {
       Character().goodDwarf(),
       Character().kingDwarf(),
       Character().mimicDwarf(),
+      Character().defaultCharacter(),
+      Character().barrelCrab(),
     ];
 
     return LayoutBuilder(

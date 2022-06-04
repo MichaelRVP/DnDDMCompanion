@@ -50,7 +50,7 @@ class Character {
         speed: 30,
         vision: 30,
         wisdom: 12,
-        icon: 'assets/images/playerIcons/player3.png');
+        icon: 'assets/images/playerIcons/player1.png');
   }
 
   Character decouple(Character inputCharater) {
@@ -93,6 +93,12 @@ class Character {
         firstName: 'Cain', icon: 'assets/images/playerIcons/thomas_export.png');
   }
 
+  Character jillian() {
+    return Character(
+        firstName: 'jillian',
+        icon: 'assets/images/playerIcons/jillian_export.png');
+  }
+
   Character box() {
     return Character(
         firstName: 'Cain', icon: 'assets/images/playerIcons/black_box.png');
@@ -120,6 +126,12 @@ class Character {
     return Character(
         firstName: 'Mimic',
         icon: 'assets/images/enemyIcons/rock_dwarf_recluse_mimic.png');
+  }
+
+  Character barrelCrab() {
+    return Character(
+        firstName: 'BarrelCrab',
+        icon: 'assets/images/enemyIcons/barrel_crab.png');
   }
 
   List<Attribute> getAttributeList(Character inputCharater) {
