@@ -73,7 +73,7 @@ class Character {
 
   Character shannon() {
     return Character(
-        firstName: 'EVELYNA',
+        firstName: 'Evelyna',
         icon: 'assets/images/playerIcons/shannon_export.png');
   }
 
@@ -86,6 +86,16 @@ class Character {
     return Character(
         firstName: 'Ilofyr',
         icon: 'assets/images/playerIcons/jackson_export.png');
+  }
+
+  Character thomas() {
+    return Character(
+        firstName: 'Cain', icon: 'assets/images/playerIcons/thomas_export.png');
+  }
+
+  Character box() {
+    return Character(
+        firstName: 'Cain', icon: 'assets/images/playerIcons/black_box.png');
   }
 
   Character goodDwarf() {

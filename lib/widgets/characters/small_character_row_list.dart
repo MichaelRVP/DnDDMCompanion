@@ -24,7 +24,9 @@ class _SmallCharacterRowListState extends State<SmallCharacterRowList> {
       Character().shannon(),
       Character().tori(),
       Character().jackson(),
-      Character().defaultCharacter(),
+      Character().thomas(),
+      Character().box(),
+      Character().defaultCharacter()
     ];
 
     List<Character> enemies = [
