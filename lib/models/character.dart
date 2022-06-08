@@ -134,6 +134,16 @@ class Character {
         icon: 'assets/images/enemyIcons/barrel_crab.png');
   }
 
+  Character bandit() {
+    return Character(
+        firstName: 'Bandit', icon: 'assets/images/enemyIcons/bandit_1.png');
+  }
+
+  Character direWolf() {
+    return Character(
+        firstName: 'Dire Wolf', icon: 'assets/images/enemyIcons/bandit_1.png');
+  }
+
   List<Attribute> getAttributeList(Character inputCharater) {
     List<Attribute> returnList = [];
     returnList.add(

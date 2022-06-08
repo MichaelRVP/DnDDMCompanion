@@ -36,6 +36,8 @@ class _SmallCharacterRowListState extends State<SmallCharacterRowList> {
       Character().mimicDwarf(),
       Character().defaultCharacter(),
       Character().barrelCrab(),
+      Character().bandit(),
+      Character().direWolf(),
     ];
 
     return LayoutBuilder(
