@@ -141,7 +141,7 @@ class Character {
 
   Character direWolf() {
     return Character(
-        firstName: 'Dire Wolf', icon: 'assets/images/enemyIcons/bandit_1.png');
+        firstName: 'Dire Wolf', icon: 'assets/images/enemyIcons/dire_wolf.png');
   }
 
   List<Attribute> getAttributeList(Character inputCharater) {
