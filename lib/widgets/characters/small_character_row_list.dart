@@ -38,6 +38,10 @@ class _SmallCharacterRowListState extends State<SmallCharacterRowList> {
       Character().barrelCrab(),
       Character().bandit(),
       Character().direWolf(),
+      Character().archer(),
+      Character().kingsKnight(),
+      Character().knight(),
+      Character().general(),
     ];
 
     return LayoutBuilder(

@@ -144,6 +144,26 @@ class Character {
         firstName: 'Dire Wolf', icon: 'assets/images/enemyIcons/dire_wolf.png');
   }
 
+  Character archer() {
+    return Character(
+        firstName: 'archer', icon: 'assets/images/enemyIcons/archer.png');
+  }
+
+  Character general() {
+    return Character(
+        firstName: 'general', icon: 'assets/images/enemyIcons/general.png');
+  }
+
+  Character kingsKnight() {
+    return Character(
+        firstName: 'King Knight', icon: 'assets/images/enemyIcons/kings-knight.png');
+  }
+
+  Character knight() {
+    return Character(
+        firstName: 'Knight', icon: 'assets/images/enemyIcons/knight.png');
+  }
+
   List<Attribute> getAttributeList(Character inputCharater) {
     List<Attribute> returnList = [];
     returnList.add(
