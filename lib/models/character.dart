@@ -209,37 +209,41 @@ class Character {
     return returnList;
   }
 
-  bool isInSight(
-      int inputX, int inputY, Map<int, bool> wallMap, double totalWidth) {
+  List<Coordinate> visionCircle() {
     final int visionRadius = vision ~/ 5;
-    final Coordinate originCord = Coordinate(x: xCord, y: yCord);
-    final Coordinate checkCord = Coordinate(x: inputX, y: inputY);
 
-    //get full possible vision box
     List<Coordinate> visionSquare = [];
 
     for (int xI = 0; xI < (visionRadius * 2); xI++) {
       for (int yI = 0; yI < (visionRadius * 2); yI++) {
         visionSquare.add(Coordinate(
-            x: ((originCord.x - visionRadius) + xI).toInt(),
-            y: ((originCord.y - visionRadius) + yI).toInt()));
+            x: ((xCord - visionRadius) + xI).toInt(),
+            y: ((yCord - visionRadius) + yI).toInt()));
       }
     }
 
     //get vision circle
     List<Coordinate> visionCircle = [];
 
-    for (final Coordinate cord in visionSquare) {
-      final int xSquared = (cord.x - originCord.x) * (cord.x - originCord.x);
-      final int ySquared = (cord.y - originCord.y) * (cord.y - originCord.y);
-      final int totalSquared = (xSquared + ySquared);
-      final double totalRooted = sqrt(totalSquared);
-      if (totalRooted <= visionRadius) {
-        visionCircle.add(Coordinate(x: cord.x, y: cord.y));
+    for (final Coordinate coord in visionSquare) {
+      //get disance between origin and input
+      int xSquared = (coord.x - xCord) * (coord.x - xCord);
+      int ySquared = (coord.y - yCord) * (coord.y - yCord);
+
+      double distance = sqrt(xSquared + ySquared);
+
+      if (distance <= visionRadius) {
+        visionCircle.add(coord);
       }
     }
 
-    List<Coordinate> areaVision = [];
+    return visionCircle;
+  }
+
+  bool isInSight(
+      int inputX, int inputY, Map<int, bool> wallMap, double totalWidth) {
+    
+    final Coordinate checkCord = Coordinate(x: inputX, y: inputY);
 
     Map<Coordinate, bool> wallMapCoordinate = wallMap.map((index, wallBool) {
       int mapXCord = (index % totalWidth).round();
@@ -251,22 +255,22 @@ class Character {
     //get all cords between origin and coord
     List<Coordinate> cordList = [];
 
-    for (final Coordinate coord in visionCircle) {
+    for (final Coordinate coord in visionCircle()) {
       //get disance between origin and input
-      int xSquared = (coord.x - originCord.x) * (coord.x - originCord.x);
-      int ySquared = (coord.y - originCord.y) * (coord.y - originCord.y);
+      int xSquared = (coord.x - xCord) * (coord.x - xCord);
+      int ySquared = (coord.y - yCord) * (coord.y - yCord);
       int totalSquared = (xSquared + ySquared);
       int distance = int.parse(sqrt(totalSquared).ceil().toStringAsFixed(0));
 
       int distanceIterator = distance * 2;
-      double xValueIterator = (coord.x - originCord.x) / distanceIterator;
-      double yValueIterator = (coord.y - originCord.y) / distanceIterator;
+      double xValueIterator = (coord.x - xCord) / distanceIterator;
+      double yValueIterator = (coord.y - yCord) / distanceIterator;
 
       //first loop for centered view coords
       for (double i = 0; i <= distanceIterator; i = i + 1) {
         Coordinate iteratedCoord = Coordinate(
-            x: (originCord.x + (xValueIterator * i)).round(),
-            y: (originCord.y + (yValueIterator * i)).round());
+            x: (xCord + (xValueIterator * i)).round(),
+            y: (yCord + (yValueIterator * i)).round());
 
         //if any cords are in wall map coords then break
         if (wallMapCoordinate.containsKey(iteratedCoord)) {
@@ -278,11 +282,11 @@ class Character {
         cordList.add(iteratedCoord);
       }
 
-      //second loop for biangulation coords
+      //second loop for bi-angulation coords
       for (double i = 0; i <= distanceIterator; i = i + 1) {
         Coordinate iteratedCoord = Coordinate(
-            x: ((originCord.x + .5) + (xValueIterator * i)).round(),
-            y: ((originCord.y - .5) + (yValueIterator * i)).round());
+            x: ((xCord + .5) + (xValueIterator * i)).round(),
+            y: ((yCord - .5) + (yValueIterator * i)).round());
 
         //if any cords are in wall map coords then break
         if (wallMapCoordinate.containsKey(iteratedCoord)) {

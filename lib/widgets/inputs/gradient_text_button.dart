@@ -31,8 +31,7 @@ class GradientTextButton extends StatelessWidget {
             ),
             TextButton(
               style: TextButton.styleFrom(
-                padding: const EdgeInsets.all(16.0),
-                primary: Colors.white,
+                foregroundColor: Colors.white, padding: const EdgeInsets.all(16.0),
                 textStyle: const TextStyle(fontSize: 20),
               ),
               onPressed: tapFunction,

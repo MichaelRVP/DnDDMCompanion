@@ -23,8 +23,8 @@ class EmptySmallCard extends StatelessWidget {
                 ),
                 borderRadius: BorderRadius.circular(20),
                 color: Colors.white.withOpacity(.9)),
-            child: Column(
-              children: const [
+            child: const Column(
+              children: [
                 Spacer(),
               ],
             ),
