@@ -20,8 +20,9 @@ class WallGridCell extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        double xCord = index % gridSizing.totalWidthCells;
-        int yCord = index ~/ gridSizing.totalWidthCells;
+        int xCord = (index % gridSizing.totalWidthCells).toInt();
+        int yCord = -(index ~/ gridSizing.totalWidthCells);
+        print(index);
         print("$xCord $yCord");
 
         GridSizing bufferSizing = gridSizing.copyWith();

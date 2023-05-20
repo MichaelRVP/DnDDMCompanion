@@ -1,5 +1,5 @@
-import 'package:dnddmcompanion/screens/grid_map_game_screen.dart';
 import 'package:dnddmcompanion/widgets/maps/controls/overlay_control_bundle.dart';
+import 'package:dnddmcompanion/widgets/maps/wrapper/wall_draw_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -55,7 +55,7 @@ class OverlayControlsRow extends ConsumerWidget {
           IconButton(
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const GridMapGameScreen(),
+                builder: (context) => const WallDrawWrapper(),
               ));
             },
             icon: const Icon(
