@@ -54,26 +54,26 @@ class _GridMapWallDrawState extends ConsumerState<GridMapWallDraw> {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: constraints.maxHeight,
-                        child: Padding(
-                          padding: EdgeInsets.fromLTRB(
-                              gridSizing.leftCellPadding,
-                              gridSizing.topCellPadding,
-                              gridSizing.rightCellPadding,
-                              gridSizing.bottomCellPadding),
-                          child: GridView.count(
-                            crossAxisCount: gridSizing.totalWidthCells.toInt(),
-                            childAspectRatio: 1,
-                            children: List.generate(
-                                gridSizing.cellTotal.toInt(), (index) {
-                              return WallGridCell(
-                                index: index,
-                              );
-                            }),
-                          ),
-                        ),
-                      ),
+                      // SizedBox(
+                      //   height: constraints.maxHeight,
+                      //   child: Padding(
+                      //     padding: EdgeInsets.fromLTRB(
+                      //         gridSizing.leftCellPadding,
+                      //         gridSizing.topCellPadding,
+                      //         gridSizing.rightCellPadding,
+                      //         gridSizing.bottomCellPadding),
+                      //     child: GridView.count(
+                      //       crossAxisCount: gridSizing.totalWidthCells.toInt(),
+                      //       childAspectRatio: 1,
+                      //       children: List.generate(
+                      //           gridSizing.cellTotal.toInt(), (index) {
+                      //         return WallGridCell(
+                      //           index: index,
+                      //         );
+                      //       }),
+                      //     ),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),

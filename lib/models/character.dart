@@ -73,99 +73,108 @@ class Character {
     );
   }
 
-  Character shannon() {
-    return Character(
-        firstName: 'Evelyna',
-        icon: 'assets/images/playerIcons/shannon_export.png');
-  }
-
-  Character tori() {
-    return Character(
-        firstName: 'Yuzo', icon: 'assets/images/playerIcons/tori_export.png');
-  }
-
-  Character jackson() {
-    return Character(
-        firstName: 'Ilofyr',
-        icon: 'assets/images/playerIcons/jackson_export.png');
-  }
-
-  Character thomas() {
-    return Character(
-        firstName: 'Cain', icon: 'assets/images/playerIcons/thomas_export.png');
-  }
-
   Character jillian() {
     return Character(
-        firstName: 'jillian',
-        icon: 'assets/images/playerIcons/jillian_export.png');
+        firstName: 'Gwenlyn', icon: 'assets/images/playerIcons/Gwenlyn.png');
   }
 
-  Character box() {
+  Character gabby() {
     return Character(
-        firstName: 'Cain', icon: 'assets/images/playerIcons/black_box.png');
+        firstName: 'Elynwe', icon: 'assets/images/playerIcons/Elynwe.png');
   }
 
-  Character goodDwarf() {
+  Character greg() {
     return Character(
-        firstName: 'DwarfGood',
-        icon: 'assets/images/enemyIcons/rock_dwarf_recluse_good.png');
+        firstName: 'Valandil', icon: 'assets/images/playerIcons/Valandil.png');
   }
 
-  Character badDwarf() {
-    return Character(
-        firstName: 'DwarfBad',
-        icon: 'assets/images/enemyIcons/rock_dwarf_recluse_bad.png');
+  Character thom() {return Character(
+    firstName: 'Lothren', icon: 'assets/images/playerIcons/lothren.png');
   }
 
-  Character kingDwarf() {
-    return Character(
-        firstName: 'DwarfKing',
-        icon: 'assets/images/enemyIcons/rock_dwarf_recluse_king.png');
+  Character james() {return Character(
+    firstName: 'Todaphel', icon: 'assets/images/playerIcons/todaphel.png');
   }
 
-  Character mimicDwarf() {
-    return Character(
-        firstName: 'Mimic',
-        icon: 'assets/images/enemyIcons/rock_dwarf_recluse_mimic.png');
+  Character tim() {return Character(
+    firstName: 'Rory', icon: 'assets/images/playerIcons/rory.png');
   }
 
-  Character barrelCrab() {
+  Character bear() {
     return Character(
-        firstName: 'BarrelCrab',
-        icon: 'assets/images/enemyIcons/barrel_crab.png');
+        firstName: 'Bear', icon: 'assets/images/enemyIcons/bear.png');
+  } 
+
+  Character treant() {
+    return Character(
+        firstName: 'Treant', icon: 'assets/images/enemyIcons/treant.png');
   }
 
-  Character bandit() {
+  Character npc() {
     return Character(
-        firstName: 'Bandit', icon: 'assets/images/enemyIcons/bandit_1.png');
+        firstName: 'NPC', icon: 'assets/images/playerIcons/NPC.png');
   }
+
+  // Character goodDwarf() {
+  //   return Character(
+  //       firstName: 'DwarfGood',
+  //       icon: 'assets/images/enemyIcons/rock_dwarf_recluse_good.png');
+  // }
+
+  // Character badDwarf() {
+  //   return Character(
+  //       firstName: 'DwarfBad',
+  //       icon: 'assets/images/enemyIcons/rock_dwarf_recluse_bad.png');
+  // }
+
+  // Character kingDwarf() {
+  //   return Character(
+  //       firstName: 'DwarfKing',
+  //       icon: 'assets/images/enemyIcons/rock_dwarf_recluse_king.png');
+  // }
+
+  // Character mimicDwarf() {
+  //   return Character(
+  //       firstName: 'Mimic',
+  //       icon: 'assets/images/enemyIcons/rock_dwarf_recluse_mimic.png');
+  // }
+
+  // Character barrelCrab() {
+  //   return Character(
+  //       firstName: 'BarrelCrab',
+  //       icon: 'assets/images/enemyIcons/barrel_crab.png');
+  // }
+
+  // Character bandit() {
+  //   return Character(
+  //       firstName: 'Bandit', icon: 'assets/images/enemyIcons/bandit_1.png');
+  // }
 
   Character direWolf() {
     return Character(
         firstName: 'Dire Wolf', icon: 'assets/images/enemyIcons/dire_wolf.png');
   }
 
-  Character archer() {
-    return Character(
-        firstName: 'archer', icon: 'assets/images/enemyIcons/archer.png');
-  }
+  // Character archer() {
+  //   return Character(
+  //       firstName: 'archer', icon: 'assets/images/enemyIcons/archer.png');
+  // }
 
-  Character general() {
-    return Character(
-        firstName: 'general', icon: 'assets/images/enemyIcons/general.png');
-  }
+  // Character general() {
+  //   return Character(
+  //       firstName: 'general', icon: 'assets/images/enemyIcons/general.png');
+  // }
 
-  Character kingsKnight() {
-    return Character(
-        firstName: 'King Knight',
-        icon: 'assets/images/enemyIcons/kings-knight.png');
-  }
+  // Character kingsKnight() {
+  //   return Character(
+  //       firstName: 'King Knight',
+  //       icon: 'assets/images/enemyIcons/kings-knight.png');
+  // }
 
-  Character knight() {
-    return Character(
-        firstName: 'Knight', icon: 'assets/images/enemyIcons/knight.png');
-  }
+  // Character knight() {
+  //   return Character(
+  //       firstName: 'Knight', icon: 'assets/images/enemyIcons/knight.png');
+  // }
 
   List<Attribute> getAttributeList(Character inputCharater) {
     List<Attribute> returnList = [];
@@ -242,7 +251,6 @@ class Character {
 
   bool isInSight(
       int inputX, int inputY, Map<int, bool> wallMap, double totalWidth) {
-    
     final Coordinate checkCord = Coordinate(x: inputX, y: inputY);
 
     Map<Coordinate, bool> wallMapCoordinate = wallMap.map((index, wallBool) {

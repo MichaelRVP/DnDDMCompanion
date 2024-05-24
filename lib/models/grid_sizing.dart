@@ -12,13 +12,13 @@ class GridSizing {
   final Map<int, bool> wallMap;
 
   const GridSizing({
-    this.totalWidthCells = 66,
+    this.totalWidthCells = 22,
     this.totalHeightCells = 50,
     this.topCellPadding = 0,
     this.bottomCellPadding = 0,
-    this.leftCellPadding = 264,
-    this.rightCellPadding = 263,
-    this.cellTotal = 2700,
+    this.leftCellPadding = 398,
+    this.rightCellPadding = 398,
+    this.cellTotal = 484,
     this.wallMap = const {},
   });
 
