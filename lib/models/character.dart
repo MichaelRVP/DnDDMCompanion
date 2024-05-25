@@ -73,6 +73,48 @@ class Character {
     );
   }
 
+  //to json
+  Map<String, dynamic> toJson() {
+    return {
+      'firstName': firstName,
+      'lastName': lastName,
+      'strength': strength,
+      'dexterity': dexterity,
+      'constitution': constitution,
+      'intelligence': intelligence,
+      'wisdom': wisdom,
+      'charisma': charisma,
+      'vision': vision,
+      'speed': speed,
+      'initiative': initiative,
+      'armorClass': armorClass,
+      'icon': icon,
+      'xCord': xCord,
+      'yCord': yCord,
+    };
+  }
+
+  //from json
+  factory Character.fromJson(Map<String, dynamic> json) {
+    return Character(
+      firstName: json['firstName'],
+      lastName: json['lastName'],
+      strength: json['strength'],
+      dexterity: json['dexterity'],
+      constitution: json['constitution'],
+      intelligence: json['intelligence'],
+      wisdom: json['wisdom'],
+      charisma: json['charisma'],
+      vision: json['vision'],
+      speed: json['speed'],
+      initiative: json['initiative'],
+      armorClass: json['armorClass'],
+      icon: json['icon'],
+      xCord: json['xCord'],
+      yCord: json['yCord'],
+    );
+  }
+
   Character jillian() {
     return Character(
         firstName: 'Gwenlyn', icon: 'assets/images/playerIcons/Gwenlyn.png');

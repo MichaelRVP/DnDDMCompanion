@@ -1,5 +1,4 @@
 import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/models/providers/grid_sizing_notifier.dart';
 import 'package:dnddmcompanion/widgets/characters/draggable_character_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,7 +38,8 @@ class _MapDragTargetState extends ConsumerState<MapDragTarget> {
         //     : Colors.black.withOpacity(.3),
         //child:
         DragTarget(
-      onAccept: (Character character) {
+      onAcceptWithDetails: (details) {
+        final Character character = details.data as Character;
         setState(() {
           gridCharacter = character;
         });

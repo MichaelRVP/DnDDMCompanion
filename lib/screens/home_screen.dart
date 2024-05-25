@@ -1,60 +1,82 @@
-import 'package:dnddmcompanion/models/character.dart';
-import 'package:dnddmcompanion/screens/full_map.dart';
-import 'package:dnddmcompanion/screens/full_page_character_edit.dart';
-import 'package:dnddmcompanion/screens/master_map_viewer.dart';
-import 'package:dnddmcompanion/widgets/inputs/gradient_text_button.dart';
+import 'package:dnddmcompanion/screens/game_start_up/save_file_selection_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class HomeGameScreen extends ConsumerWidget {
+  const HomeGameScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: 350,
-              child: GradientTextButton(
-                inputString: 'See Character',
-                tapFunction: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => FullPageCharacterEdit(
-                      character: Character().defaultCharacter(),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  child: ListTile(
+                    title: const Text(
+                      'Characters',
+                      textAlign: TextAlign.center,
                     ),
-                  ));
-                },
+                    onTap: () {},
+                  ),
+                ),
               ),
-            ),
-            SizedBox(
-              width: 350,
-              child: GradientTextButton(
-                inputString: 'See Map',
-                tapFunction: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const FullMap(
-                      imageString: 'images/maps/neverWinterMap.png',
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  child: ListTile(
+                    title: const Text(
+                      'Enemies',
+                      textAlign: TextAlign.center,
                     ),
-                  ));
-                },
+                    onTap: () {},
+                  ),
+                ),
               ),
-            ),
-            SizedBox(
-              width: 350,
-              child: GradientTextButton(
-                inputString: 'Master Map Viewer',
-                tapFunction: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MasetMapViewer(),
-                  ));
-                },
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  child: ListTile(
+                    title: const Text(
+                      'Maps',
+                      textAlign: TextAlign.center,
+                    ),
+                    onTap: () {},
+                  ),
+                ),
               ),
-            ),
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  child: ListTile(
+                    title: const Text(
+                      'Play Session',
+                      textAlign: TextAlign.center,
+                    ),
+                    onTap: () {},
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  child: ListTile(
+                    title: const Text(
+                      'Choose Different Save File',
+                      textAlign: TextAlign.center,
+                    ),
+                    onTap: () {
+                      ref.read(currentSaveFile.notifier).state = null;
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

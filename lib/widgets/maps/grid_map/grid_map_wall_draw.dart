@@ -1,7 +1,4 @@
 import 'package:dnddmcompanion/main.dart';
-import 'package:dnddmcompanion/models/grid_sizing.dart';
-import 'package:dnddmcompanion/models/providers/grid_sizing_notifier.dart';
-import 'package:dnddmcompanion/widgets/maps/cells/wall_grid_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,8 +13,6 @@ class GridMapWallDraw extends ConsumerStatefulWidget {
 class _GridMapWallDrawState extends ConsumerState<GridMapWallDraw> {
   @override
   Widget build(BuildContext context) {
-    GridSizing gridSizing = ref.watch(gridSizingNotifierProvider);
-
     final String imageString = ref.watch(selectedImageNotifier);
 
     return LayoutBuilder(

@@ -1,4 +1,5 @@
 import 'package:dnddmcompanion/screens/home_screen.dart';
+import 'package:dnddmcompanion/screens/game_start_up/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 /// The Widget that configures your application.
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       // SettingsController to display the correct theme.
       theme: ThemeData(),
       darkTheme: ThemeData.dark(),
-      home: const HomeScreen(),
+      home: const Scaffold(body: WelcomeScreen()),
     );
   }
 }
