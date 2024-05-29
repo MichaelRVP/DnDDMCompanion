@@ -21,9 +21,9 @@ class _SmallCharacterRowListState extends State<SmallCharacterRowList> {
   @override
   Widget build(BuildContext context) {
     List<Character> characters = [
-      //Character().jillian(),
-      //Character().greg(),
-      //Character().gabby(),
+      Character().jillian(),
+      Character().greg(),
+      Character().gabby(),
       Character().npc(),
       Character().thom(),
       Character().james(),
@@ -33,8 +33,6 @@ class _SmallCharacterRowListState extends State<SmallCharacterRowList> {
     List<Character> enemies = [
       //Character().defaultCharacter(),
       //Character().direWolf(),
-      Character().bear(),
-      Character().treant(),
     ];
 
     return LayoutBuilder(

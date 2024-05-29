@@ -27,17 +27,7 @@ class _MapDragTargetState extends ConsumerState<MapDragTarget> {
 
   @override
   Widget build(BuildContext context) {
-    return
-        //Container(
-        // color: gridCharacter.isInSight(
-        //         widget.xCord,
-        //         widget.yCord,
-        //         ref.read(gridSizingNotifierProvider).wallMap,
-        //         ref.read(gridSizingNotifierProvider).totalWidthCells)
-        //     ? Colors.black.withOpacity(0)
-        //     : Colors.black.withOpacity(.3),
-        //child:
-        DragTarget(
+    return DragTarget(
       onAcceptWithDetails: (details) {
         final Character character = details.data as Character;
         setState(() {
@@ -45,7 +35,7 @@ class _MapDragTargetState extends ConsumerState<MapDragTarget> {
         });
       },
       onLeave: (Character? leaveCharacter) {
-        if (leaveCharacter?.firstName == gridCharacter.firstName) {
+        if (leaveCharacter?.id == gridCharacter.id ) {
           setState(() {
             gridCharacter = Character();
             gridCharacter.firstName = '';
@@ -58,11 +48,5 @@ class _MapDragTargetState extends ConsumerState<MapDragTarget> {
             : Container();
       }),
     );
-    //);
   }
 }
-
-// Container(
-//   decoration: BoxDecoration(
-//       color: Color((Random().nextDouble() * 0xFFFFFF).toInt())
-//           .withOpacity(.4)));

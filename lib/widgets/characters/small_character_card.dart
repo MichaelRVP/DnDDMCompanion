@@ -57,8 +57,8 @@ class _SmallCharacterCardState extends State<SmallCharacterCard> {
                 children: [
                   SizedBox(
                     height: constraints.maxHeight * .9,
-                    child:
-                        SmallImageIconCard(imageString: widget.character.icon!),
+                    child: SmallImageIconCard(
+                        imageString: widget.character.iconLocation!),
                   ),
                   // const Spacer(),
                   // Padding(

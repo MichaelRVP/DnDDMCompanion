@@ -26,7 +26,7 @@ class DraggableCharacterCard extends StatelessWidget {
         height: 50,
         child: Center(
           child: SmallImageIconCard(
-            imageString: character.icon!,
+            imageString: character.iconLocation!,
           ),
         ),
       ),

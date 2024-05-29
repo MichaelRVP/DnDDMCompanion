@@ -32,7 +32,9 @@ class SaveStructure {
   factory SaveStructure.fromJson(Map<String, dynamic> json) {
     return SaveStructure(
       path: json['path'],
-      saveData: json['saveData'].map<SaveFile>((saveFile) => SaveFile.fromJson(saveFile)).toList(),
+      saveData: json['saveData']
+          .map<SaveFile>((saveFile) => SaveFile.fromJson(saveFile))
+          .toList(),
     );
   }
 
@@ -44,4 +46,15 @@ class SaveStructure {
     );
   }
 
+  //update save file
+  SaveStructure updateSaveFile(SaveFile saveFile) {
+    List<SaveFile> updatedSaveFiles = saveData.toList();
+
+    updatedSaveFiles[saveFile.index!] = saveFile;
+
+    return SaveStructure(
+      path: path,
+      saveData: updatedSaveFiles,
+    );
+  }
 }

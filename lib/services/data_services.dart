@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:dnddmcompanion/models/save_file.dart';
 import 'package:dnddmcompanion/models/save_structure.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
@@ -83,5 +84,59 @@ class DataServices {
     await file.writeAsString(jsonData);
 
     return saveStructure;
+  }
+
+  //function to add an image from comptuer to a character and in the assets/playericons folder
+  Future<String> addCharacterImage() async {
+    // Open the file picker
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['jpg', 'png'],
+      withData: true, // Add this line
+    );
+
+    if (result != null) {
+      // Get the file
+      PlatformFile file = result.files.first;
+
+      // Get the directory
+      final directory = await getApplicationDocumentsDirectory();
+
+      final directoryPath = '${directory.path}/DMCompanion/characterIcons';
+      final dir = Directory(directoryPath);
+      if (!await dir.exists()) {
+        await dir.create(
+            recursive:
+                true); // Use recursive: true to create all directories in the path
+      }
+
+      // Create the file path
+      final filePath =
+          '${directory.path}/DMCompanion/characterIcons/${file.name}';
+
+      // Copy the file to the directory
+      final fileBytes = file.bytes;
+      if (fileBytes != null) {
+        // Check if fileBytes is not null
+        final fileOnDevice = File(filePath);
+        await fileOnDevice.writeAsBytes(fileBytes);
+
+        return filePath;
+      } else {
+        throw Exception('Failed to read file bytes');
+      }
+    } else {
+      return '';
+    }
+  }
+
+  //save save file in save structure
+  Future<void> saveSaveFile(
+      SaveStructure saveStructure, SaveFile saveFile) async {
+    // Update the save file in the save structure
+    saveStructure = saveStructure.updateSaveFile(saveFile);
+
+    // Save the save structure
+    await saveSaveStructure(saveStructure);
   }
 }

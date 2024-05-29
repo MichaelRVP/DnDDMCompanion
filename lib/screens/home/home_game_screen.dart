@@ -1,4 +1,7 @@
+import 'package:dnddmcompanion/screens/characters/all_character_screen.dart';
+import 'package:dnddmcompanion/screens/enemies/all_enemies_screen.dart';
 import 'package:dnddmcompanion/screens/game_start_up/save_file_selection_screen.dart';
+import 'package:dnddmcompanion/screens/maps/all_maps_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -20,7 +23,13 @@ class HomeGameScreen extends ConsumerWidget {
                       'Characters',
                       textAlign: TextAlign.center,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AllCharacterScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
@@ -32,7 +41,14 @@ class HomeGameScreen extends ConsumerWidget {
                       'Enemies',
                       textAlign: TextAlign.center,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      //open enemies
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AllEnemiesScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),
@@ -44,7 +60,14 @@ class HomeGameScreen extends ConsumerWidget {
                       'Maps',
                       textAlign: TextAlign.center,
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      //open maps
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AllMapsScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ),

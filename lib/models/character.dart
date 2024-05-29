@@ -16,9 +16,10 @@ class Character {
   int speed;
   int initiative;
   int armorClass;
-  String? icon;
+  String? iconLocation;
   int xCord;
   int yCord;
+  int id;
 
   Character({
     this.firstName = '',
@@ -33,43 +34,90 @@ class Character {
     this.speed = 0,
     this.initiative = 0,
     this.armorClass = 0,
-    this.icon,
+    this.iconLocation,
     this.xCord = 0,
     this.yCord = 0,
+    this.id = 0,
   });
+
+  //copy with
+  Character copyWith({
+    String? firstName,
+    String? lastName,
+    int? strength,
+    int? dexterity,
+    int? constitution,
+    int? intelligence,
+    int? wisdom,
+    int? charisma,
+    int? vision,
+    int? speed,
+    int? initiative,
+    int? armorClass,
+    String? iconLocation,
+    int? xCord,
+    int? yCord,
+    int? id,
+  }) {
+    return Character(
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      strength: strength ?? this.strength,
+      dexterity: dexterity ?? this.dexterity,
+      constitution: constitution ?? this.constitution,
+      intelligence: intelligence ?? this.intelligence,
+      wisdom: wisdom ?? this.wisdom,
+      charisma: charisma ?? this.charisma,
+      vision: vision ?? this.vision,
+      speed: speed ?? this.speed,
+      initiative: initiative ?? this.initiative,
+      armorClass: armorClass ?? this.armorClass,
+      iconLocation: iconLocation ?? this.iconLocation,
+      xCord: xCord ?? this.xCord,
+      yCord: yCord ?? this.yCord,
+      id: id ?? this.id,
+    );
+  }
 
   Character defaultCharacter() {
     return Character(
-        firstName: 'test',
-        lastName: 'character',
-        strength: 10,
-        armorClass: 14,
-        charisma: 8,
-        constitution: 12,
-        dexterity: 10,
-        initiative: 0,
-        intelligence: 14,
-        speed: 30,
-        vision: 30,
-        wisdom: 12,
-        icon: 'assets/images/playerIcons/player1.png');
+      firstName: 'test',
+      lastName: 'character',
+      strength: 10,
+      armorClass: 14,
+      charisma: 8,
+      constitution: 12,
+      dexterity: 10,
+      initiative: 0,
+      intelligence: 14,
+      speed: 30,
+      vision: 30,
+      wisdom: 12,
+      iconLocation: 'assets/images/playerIcons/player1.png',
+      xCord: 0,
+      yCord: 0,
+      id: 0,
+    );
   }
 
-  Character decouple(Character inputCharater) {
+  Character decouple(Character inputCharacter) {
     return Character(
-      firstName: inputCharater.firstName,
-      lastName: inputCharater.lastName,
-      strength: inputCharater.strength,
-      armorClass: inputCharater.armorClass,
-      charisma: inputCharater.charisma,
-      constitution: inputCharater.constitution,
-      dexterity: inputCharater.dexterity,
-      initiative: inputCharater.initiative,
-      intelligence: inputCharater.intelligence,
-      speed: inputCharater.speed,
-      vision: inputCharater.vision,
-      wisdom: inputCharater.wisdom,
-      icon: inputCharater.icon,
+      firstName: inputCharacter.firstName,
+      lastName: inputCharacter.lastName,
+      strength: inputCharacter.strength,
+      armorClass: inputCharacter.armorClass,
+      charisma: inputCharacter.charisma,
+      constitution: inputCharacter.constitution,
+      dexterity: inputCharacter.dexterity,
+      initiative: inputCharacter.initiative,
+      intelligence: inputCharacter.intelligence,
+      speed: inputCharacter.speed,
+      vision: inputCharacter.vision,
+      wisdom: inputCharacter.wisdom,
+      iconLocation: inputCharacter.iconLocation,
+      xCord: inputCharacter.xCord,
+      yCord: inputCharacter.yCord,
+      id: inputCharacter.id,
     );
   }
 
@@ -88,9 +136,10 @@ class Character {
       'speed': speed,
       'initiative': initiative,
       'armorClass': armorClass,
-      'icon': icon,
+      'icon': iconLocation,
       'xCord': xCord,
       'yCord': yCord,
+        'id': id,
     };
   }
 
@@ -109,253 +158,50 @@ class Character {
       speed: json['speed'],
       initiative: json['initiative'],
       armorClass: json['armorClass'],
-      icon: json['icon'],
+      iconLocation: json['icon'],
       xCord: json['xCord'],
       yCord: json['yCord'],
+      id: json['id'],
     );
   }
 
   Character jillian() {
     return Character(
-        firstName: 'Gwenlyn', icon: 'assets/images/playerIcons/Gwenlyn.png');
+        firstName: 'Gwenlyn',
+        iconLocation: 'assets/images/playerIcons/Gwenlyn.png');
   }
 
   Character gabby() {
     return Character(
-        firstName: 'Elynwe', icon: 'assets/images/playerIcons/Elynwe.png');
+        firstName: 'Elynwe',
+        iconLocation: 'assets/images/playerIcons/Elynwe.png');
   }
 
   Character greg() {
     return Character(
-        firstName: 'Valandil', icon: 'assets/images/playerIcons/Valandil.png');
+        firstName: 'Valandil',
+        iconLocation: 'assets/images/playerIcons/Valandil.png');
   }
 
-  Character thom() {return Character(
-    firstName: 'Lothren', icon: 'assets/images/playerIcons/lothren.png');
-  }
-
-  Character james() {return Character(
-    firstName: 'Todaphel', icon: 'assets/images/playerIcons/todaphel.png');
-  }
-
-  Character tim() {return Character(
-    firstName: 'Rory', icon: 'assets/images/playerIcons/rory.png');
-  }
-
-  Character bear() {
+  Character thom() {
     return Character(
-        firstName: 'Bear', icon: 'assets/images/enemyIcons/bear.png');
-  } 
+        firstName: 'Lothren',
+        iconLocation: 'assets/images/playerIcons/lothren.png');
+  }
 
-  Character treant() {
+  Character james() {
     return Character(
-        firstName: 'Treant', icon: 'assets/images/enemyIcons/treant.png');
+        firstName: 'Todaphel',
+        iconLocation: 'assets/images/playerIcons/todaphel.png');
+  }
+
+  Character tim() {
+    return Character(
+        firstName: 'Rory', iconLocation: 'assets/images/playerIcons/rory.png');
   }
 
   Character npc() {
     return Character(
-        firstName: 'NPC', icon: 'assets/images/playerIcons/NPC.png');
-  }
-
-  // Character goodDwarf() {
-  //   return Character(
-  //       firstName: 'DwarfGood',
-  //       icon: 'assets/images/enemyIcons/rock_dwarf_recluse_good.png');
-  // }
-
-  // Character badDwarf() {
-  //   return Character(
-  //       firstName: 'DwarfBad',
-  //       icon: 'assets/images/enemyIcons/rock_dwarf_recluse_bad.png');
-  // }
-
-  // Character kingDwarf() {
-  //   return Character(
-  //       firstName: 'DwarfKing',
-  //       icon: 'assets/images/enemyIcons/rock_dwarf_recluse_king.png');
-  // }
-
-  // Character mimicDwarf() {
-  //   return Character(
-  //       firstName: 'Mimic',
-  //       icon: 'assets/images/enemyIcons/rock_dwarf_recluse_mimic.png');
-  // }
-
-  // Character barrelCrab() {
-  //   return Character(
-  //       firstName: 'BarrelCrab',
-  //       icon: 'assets/images/enemyIcons/barrel_crab.png');
-  // }
-
-  // Character bandit() {
-  //   return Character(
-  //       firstName: 'Bandit', icon: 'assets/images/enemyIcons/bandit_1.png');
-  // }
-
-  Character direWolf() {
-    return Character(
-        firstName: 'Dire Wolf', icon: 'assets/images/enemyIcons/dire_wolf.png');
-  }
-
-  // Character archer() {
-  //   return Character(
-  //       firstName: 'archer', icon: 'assets/images/enemyIcons/archer.png');
-  // }
-
-  // Character general() {
-  //   return Character(
-  //       firstName: 'general', icon: 'assets/images/enemyIcons/general.png');
-  // }
-
-  // Character kingsKnight() {
-  //   return Character(
-  //       firstName: 'King Knight',
-  //       icon: 'assets/images/enemyIcons/kings-knight.png');
-  // }
-
-  // Character knight() {
-  //   return Character(
-  //       firstName: 'Knight', icon: 'assets/images/enemyIcons/knight.png');
-  // }
-
-  List<Attribute> getAttributeList(Character inputCharater) {
-    List<Attribute> returnList = [];
-    returnList.add(
-      Attribute(
-        name: 'STR',
-        value: inputCharater.strength,
-      ),
-    );
-    returnList.add(
-      Attribute(
-        name: 'DEX',
-        value: inputCharater.dexterity,
-      ),
-    );
-    returnList.add(
-      Attribute(
-        name: 'CON',
-        value: inputCharater.constitution,
-      ),
-    );
-    returnList.add(
-      Attribute(
-        name: 'INT',
-        value: inputCharater.intelligence,
-      ),
-    );
-    returnList.add(
-      Attribute(
-        name: 'WIS',
-        value: inputCharater.wisdom,
-      ),
-    );
-    returnList.add(
-      Attribute(
-        name: 'CHA',
-        value: inputCharater.charisma,
-      ),
-    );
-
-    return returnList;
-  }
-
-  List<Coordinate> visionCircle() {
-    final int visionRadius = vision ~/ 5;
-
-    List<Coordinate> visionSquare = [];
-
-    for (int xI = 0; xI < (visionRadius * 2); xI++) {
-      for (int yI = 0; yI < (visionRadius * 2); yI++) {
-        visionSquare.add(Coordinate(
-            x: ((xCord - visionRadius) + xI).toInt(),
-            y: ((yCord - visionRadius) + yI).toInt()));
-      }
-    }
-
-    //get vision circle
-    List<Coordinate> visionCircle = [];
-
-    for (final Coordinate coord in visionSquare) {
-      //get disance between origin and input
-      int xSquared = (coord.x - xCord) * (coord.x - xCord);
-      int ySquared = (coord.y - yCord) * (coord.y - yCord);
-
-      double distance = sqrt(xSquared + ySquared);
-
-      if (distance <= visionRadius) {
-        visionCircle.add(coord);
-      }
-    }
-
-    return visionCircle;
-  }
-
-  bool isInSight(
-      int inputX, int inputY, Map<int, bool> wallMap, double totalWidth) {
-    final Coordinate checkCord = Coordinate(x: inputX, y: inputY);
-
-    Map<Coordinate, bool> wallMapCoordinate = wallMap.map((index, wallBool) {
-      int mapXCord = (index % totalWidth).round();
-      int mapYCord = -(index ~/ totalWidth);
-
-      return MapEntry(Coordinate(x: mapXCord, y: mapYCord), wallBool);
-    });
-
-    //get all cords between origin and coord
-    List<Coordinate> cordList = [];
-
-    for (final Coordinate coord in visionCircle()) {
-      //get disance between origin and input
-      int xSquared = (coord.x - xCord) * (coord.x - xCord);
-      int ySquared = (coord.y - yCord) * (coord.y - yCord);
-      int totalSquared = (xSquared + ySquared);
-      int distance = int.parse(sqrt(totalSquared).ceil().toStringAsFixed(0));
-
-      int distanceIterator = distance * 2;
-      double xValueIterator = (coord.x - xCord) / distanceIterator;
-      double yValueIterator = (coord.y - yCord) / distanceIterator;
-
-      //first loop for centered view coords
-      for (double i = 0; i <= distanceIterator; i = i + 1) {
-        Coordinate iteratedCoord = Coordinate(
-            x: (xCord + (xValueIterator * i)).round(),
-            y: (yCord + (yValueIterator * i)).round());
-
-        //if any cords are in wall map coords then break
-        if (wallMapCoordinate.containsKey(iteratedCoord)) {
-          if (wallMapCoordinate[iteratedCoord] == true) {
-            break;
-          }
-        }
-
-        cordList.add(iteratedCoord);
-      }
-
-      //second loop for bi-angulation coords
-      for (double i = 0; i <= distanceIterator; i = i + 1) {
-        Coordinate iteratedCoord = Coordinate(
-            x: ((xCord + .5) + (xValueIterator * i)).round(),
-            y: ((yCord - .5) + (yValueIterator * i)).round());
-
-        //if any cords are in wall map coords then break
-        if (wallMapCoordinate.containsKey(iteratedCoord)) {
-          if (wallMapCoordinate[iteratedCoord] == true) {
-            break;
-          }
-        }
-
-        cordList.add(iteratedCoord);
-      }
-    }
-
-    int returnIndex = cordList.indexWhere((element) =>
-        Coordinate(x: checkCord.x, y: checkCord.y).compareCords(element));
-
-    if (returnIndex != -1) {
-      return true;
-    } else {
-      return false;
-    }
+        firstName: 'NPC', iconLocation: 'assets/images/playerIcons/NPC.png');
   }
 }

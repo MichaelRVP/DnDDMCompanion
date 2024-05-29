@@ -21,7 +21,7 @@ class DraggableCharacterImage extends ConsumerWidget {
         height: 20,
         child: Center(
           child: SmallImageIconCard(
-            imageString: character.icon!,
+            imageString: character.iconLocation!,
           ),
         ),
       ),
@@ -30,7 +30,7 @@ class DraggableCharacterImage extends ConsumerWidget {
         height: 20,
         child: Center(
           child: SmallImageIconCard(
-            imageString: character.icon!,
+            imageString: character.iconLocation!,
           ),
         ),
       ),

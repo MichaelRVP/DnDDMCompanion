@@ -6,15 +6,32 @@ class SaveFile {
   final List<Character> characters;
   final List<Character> enemies;
   final List<MapData> maps;
-  final int index;
+  final int? index;
 
   const SaveFile({
     required this.name,
     required this.characters,
     required this.enemies,
     required this.maps,
-    this.index = 0,
+    this.index,
   });
+
+  //copy with
+  SaveFile copyWith({
+    String? name,
+    List<Character>? characters,
+    List<Character>? enemies,
+    List<MapData>? maps,
+    int? id,
+  }) {
+    return SaveFile(
+      name: name ?? this.name,
+      characters: characters ?? this.characters,
+      enemies: enemies ?? this.enemies,
+      maps: maps ?? this.maps,
+      index: id ?? index,
+    );
+  }
 
   //to json
   Map<String, dynamic> toJson() {
@@ -39,4 +56,42 @@ class SaveFile {
       maps: json['maps'].map<MapData>((map) => MapData.fromJson(map)).toList(),
     );
   }
+
+  //add a new character
+  SaveFile addCharacter(Character character) {
+    return copyWith(
+      characters: [...characters, character.copyWith(id: characters.length)],
+    );
+  }
+
+  //update a character
+  SaveFile updateCharacter(Character character) {
+    List<Character> updatedCharacters = characters.toList();
+
+    updatedCharacters[character.id] = character;
+
+    return copyWith(
+      characters: updatedCharacters,
+    );
+  }
+
+  //add enemy
+  SaveFile addEnemy(Character enemy) {
+    return copyWith(
+      enemies: [...enemies, enemy.copyWith(id: enemies.length)],
+    );
+  }
+
+  //update enemy
+  SaveFile updateEnemy(Character enemy) {
+    List<Character> updatedEnemies = enemies.toList();
+
+    updatedEnemies[enemy.id] = enemy;
+
+    return copyWith(
+      enemies: updatedEnemies,
+    );
+  }
+
+  
 }

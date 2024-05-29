@@ -1,7 +1,7 @@
 import 'package:dnddmcompanion/models/save_file.dart';
 import 'package:dnddmcompanion/models/save_structure.dart';
 import 'package:dnddmcompanion/screens/game_start_up/welcome_screen.dart';
-import 'package:dnddmcompanion/screens/home_screen.dart';
+import 'package:dnddmcompanion/screens/home/home_game_screen.dart';
 import 'package:dnddmcompanion/services/data_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -50,7 +50,7 @@ class _SaveFileSelectionScreenState
                             'Characters: ${saveStructure.saveData[index].characters.length}'),
                         onTap: () {
                           ref.read(currentSaveFile.notifier).state =
-                              saveStructure.saveData[index];
+                              saveStructure.saveData[index].copyWith(id: index);
 
                           //navigate to home screen with save file data
                           Navigator.of(context).push(
@@ -92,6 +92,9 @@ class _SaveFileSelectionScreenState
                             ref.read(saveStructureProvider.notifier).state =
                                 ref.read(saveStructureProvider)!.addSaveFile(
                                       SaveFile(
+                                        index: ref.read(saveStructureProvider)!
+                                            .saveData
+                                            .length,
                                         name: _controller.text,
                                         characters: [],
                                         enemies: [],
