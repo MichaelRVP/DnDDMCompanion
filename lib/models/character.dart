@@ -1,8 +1,3 @@
-import 'dart:math';
-
-import 'package:dnddmcompanion/models/attribute.dart';
-import 'package:dnddmcompanion/models/coordinate.dart';
-
 class Character {
   String firstName;
   String lastName;
@@ -139,7 +134,7 @@ class Character {
       'icon': iconLocation,
       'xCord': xCord,
       'yCord': yCord,
-        'id': id,
+      'id': id,
     };
   }
 
