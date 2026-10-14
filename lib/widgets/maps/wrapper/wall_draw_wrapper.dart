@@ -10,18 +10,27 @@ class WallDrawWrapper extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SizedBox(
-              height: MediaQuery.of(context).size.height * .7,
-              width: MediaQuery.of(context).size.width,
-              child: const GridMapWallDraw()),
-          SizedBox(
-              height: MediaQuery.of(context).size.height * .15,
-              width: MediaQuery.of(context).size.width,
-              child: const WallSaveRow()),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              Expanded(
+                flex: 82,
+                child: SizedBox(
+                  width: constraints.maxWidth,
+                  child: const GridMapWallDraw(),
+                ),
+              ),
+              Expanded(
+                flex: 18,
+                child: SizedBox(
+                  width: constraints.maxWidth,
+                  child: const WallSaveRow(),
+                ),
+              ),
+            ],
+          );
+        },
       ),
     );
   }
