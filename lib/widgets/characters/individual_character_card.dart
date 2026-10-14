@@ -21,6 +21,7 @@ class _IndividualCharacterCardState extends State<IndividualCharacterCard> {
   late TextEditingController firstNameController;
   late TextEditingController lastNameController;
   late TextEditingController imageLocationString;
+  late TextEditingController levelController;
 
   @override
   void initState() {
@@ -33,10 +34,21 @@ class _IndividualCharacterCardState extends State<IndividualCharacterCard> {
         text: widget.character.lastName.isNotEmpty
             ? widget.character.lastName
             : null);
+    levelController =
+        TextEditingController(text: widget.character.level?.toString() ?? '');
     imageLocationString = TextEditingController(
         text: (widget.character.iconLocation?.isNotEmpty ?? false)
             ? widget.character.iconLocation
             : null);
+  }
+
+  @override
+  void dispose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    imageLocationString.dispose();
+    levelController.dispose();
+    super.dispose();
   }
 
   @override
@@ -66,6 +78,16 @@ class _IndividualCharacterCardState extends State<IndividualCharacterCard> {
                     decoration: const InputDecoration(
                       labelText: 'Last Name',
                     ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    controller: levelController,
+                    keyboardType:
+                        const TextInputType.numberWithOptions(signed: true),
+                    decoration:
+                        const InputDecoration(labelText: 'Level (optional)'),
                   ),
                 ),
                 const Divider(),
@@ -104,10 +126,25 @@ class _IndividualCharacterCardState extends State<IndividualCharacterCard> {
                     text: 'Save Changes',
                     onPressed: () {
                       //pop dialog and send character back
-                      Navigator.of(context).pop(Character(
+                      final levelText = levelController.text.trim();
+                      final level =
+                          levelText.isEmpty ? null : int.tryParse(levelText);
+                      if (levelText.isNotEmpty && level == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text(
+                                  'Enter a whole-number level, or leave it blank.')),
+                        );
+                        return;
+                      }
+                      Navigator.of(context).pop(widget.character.copyWith(
                         firstName: firstNameController.text,
                         lastName: lastNameController.text,
-                        iconLocation: imageLocationString.text,
+                        iconLocation: imageLocationString.text.isEmpty
+                            ? widget.character.iconLocation
+                            : imageLocationString.text,
+                        level: level,
+                        clearLevel: levelText.isEmpty,
                       ));
                     })
               ],
