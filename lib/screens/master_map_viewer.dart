@@ -17,32 +17,50 @@ class MasetMapViewer extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(),
       body: FutureBuilder<List<String>>(
-          future: ds.getAllMaps(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<String> mapsList = snapshot.data!;
+        future: ds.getAllMaps(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Loading();
+          }
 
-              return SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ref.watch(selectedImageNotifier) == ''
-                        ? SizedBox(
-                            width: MediaQuery.of(context).size.width * .2,
+          final List<String> mapsList = snapshot.data!;
+          final bool hasSelection = ref.watch(selectedImageNotifier) != '';
+
+          return LayoutBuilder(
+            builder: (context, constraints) {
+              return SizedBox(
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: SizedBox(
+                    width: constraints.maxWidth,
+                    height: constraints.maxHeight,
+                    child: Row(
+                      key: const ValueKey<String>('master-import-row'),
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (!hasSelection)
+                          SizedBox(
+                            width: constraints.maxWidth * .2,
                             child: MapListView(mapsList: mapsList),
-                          )
-                        : Container(),
-                    const Center(
-                      child: GridOverlayMapWrapper(),
+                          ),
+                        Expanded(
+                          child: GridOverlayMapWrapper(
+                            key: const ValueKey<String>(
+                              'master-import-wrapper',
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               );
-            } else {
-              return const Loading();
-            }
-          }),
+            },
+          );
+        },
+      ),
     );
   }
 }

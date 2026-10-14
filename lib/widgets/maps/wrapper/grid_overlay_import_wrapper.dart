@@ -12,22 +12,33 @@ class GridOverlayMapWrapper extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final String imageString = ref.watch(selectedImageNotifier);
 
-    if (imageString != '') {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          SizedBox(
-              height: MediaQuery.of(context).size.height * .7,
-              width: MediaQuery.of(context).size.width,
-              child: const GridMapImporter()),
-          SizedBox(
-              height: MediaQuery.of(context).size.height * .15,
-              width: MediaQuery.of(context).size.width,
-              child: const OverlayControlsRow()),
-        ],
-      );
-    } else {
+    if (imageString == '') {
       return const Loading();
     }
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Column(
+          children: [
+            Expanded(
+              child: SizedBox(
+                key: const ValueKey<String>('import-map-region'),
+                width: constraints.maxWidth,
+                child: const GridMapImporter(),
+              ),
+            ),
+            SizedBox(
+              // Two 48px calibration buttons plus the toolbar's 24px padding.
+              height: constraints.maxHeight < 120 ? constraints.maxHeight : 120,
+              child: SizedBox(
+                key: const ValueKey<String>('import-controls-region'),
+                width: constraints.maxWidth,
+                child: const OverlayControlsRow(),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

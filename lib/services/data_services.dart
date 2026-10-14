@@ -11,12 +11,11 @@ import 'package:path_provider/path_provider.dart';
 class DataServices {
   Future<List<String>> getAllMaps() async {
     // >> To get paths you need these 2 lines
-    final manifestContent = await rootBundle.loadString('AssetManifest.json');
-
-    final Map<String, dynamic> manifestMap = json.decode(manifestContent);
+    final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
     // >> To get paths you need these 2 lines
 
-    final imagePaths = manifestMap.keys
+    final imagePaths = manifest
+        .listAssets()
         .where((String key) => key.contains('assets/images/maps/'))
         .where((String key) => key.contains('.png'))
         .toList();

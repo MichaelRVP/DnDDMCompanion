@@ -15,54 +15,58 @@ class OverlayControlsRow extends ConsumerWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Colors.blue.withOpacity(.4)),
-      child: Row(
-        children: [
-          const OverlayControlBundle(
-            hintText: 'Top',
-            gridSizeOption: 'top',
-          ),
-          const Spacer(),
-          const OverlayControlBundle(
-            hintText: 'Bottom',
-            gridSizeOption: 'bottom',
-          ),
-          const Spacer(),
-          const OverlayControlBundle(
-            hintText: 'Left',
-            gridSizeOption: 'left',
-          ),
-          const Spacer(),
-          const OverlayControlBundle(
-            hintText: 'Right',
-            gridSizeOption: 'right',
-          ),
-          const Spacer(),
-          // const OverlayControlBundle(
-          //   hintText: 'Height',
-          //   gridSizeOption: 'height',
-          // ),
-          // const Spacer(),
-          const OverlayControlBundle(
-            hintText: 'Width',
-            gridSizeOption: 'width',
-          ),
-          const Spacer(),
-          const OverlayControlBundle(
-            hintText: 'Size',
-            gridSizeOption: 'cell',
-          ),
-          const Spacer(),
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const WallDrawWrapper(),
-              ));
-            },
-            icon: const Icon(
-              Icons.save,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const OverlayControlBundle(
+              hintText: 'Top',
+              gridSizeOption: 'top',
             ),
-          ),
-        ],
+            const SizedBox(width: 16),
+            const OverlayControlBundle(
+              hintText: 'Bottom',
+              gridSizeOption: 'bottom',
+            ),
+            const SizedBox(width: 16),
+            const OverlayControlBundle(
+              hintText: 'Left',
+              gridSizeOption: 'left',
+            ),
+            const SizedBox(width: 16),
+            const OverlayControlBundle(
+              hintText: 'Right',
+              gridSizeOption: 'right',
+            ),
+            const SizedBox(width: 16),
+            // const OverlayControlBundle(
+            //   hintText: 'Height',
+            //   gridSizeOption: 'height',
+            // ),
+            // const SizedBox(width: 16),
+            const OverlayControlBundle(
+              hintText: 'Width',
+              gridSizeOption: 'width',
+            ),
+            const SizedBox(width: 16),
+            const OverlayControlBundle(
+              hintText: 'Size',
+              gridSizeOption: 'cell',
+            ),
+            const SizedBox(width: 16),
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const WallDrawWrapper(),
+                ));
+              },
+              icon: const Icon(
+                Icons.save,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
