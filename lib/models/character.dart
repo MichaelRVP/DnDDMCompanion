@@ -1,6 +1,7 @@
 class Character {
   String firstName;
   String lastName;
+  int? level;
   int strength;
   int dexterity;
   int constitution;
@@ -19,6 +20,7 @@ class Character {
   Character({
     this.firstName = '',
     this.lastName = '',
+    this.level,
     this.strength = 0,
     this.dexterity = 0,
     this.constitution = 0,
@@ -39,6 +41,8 @@ class Character {
   Character copyWith({
     String? firstName,
     String? lastName,
+    int? level,
+    bool clearLevel = false,
     int? strength,
     int? dexterity,
     int? constitution,
@@ -57,6 +61,7 @@ class Character {
     return Character(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
+      level: clearLevel ? null : (level ?? this.level),
       strength: strength ?? this.strength,
       dexterity: dexterity ?? this.dexterity,
       constitution: constitution ?? this.constitution,
@@ -99,6 +104,7 @@ class Character {
     return Character(
       firstName: inputCharacter.firstName,
       lastName: inputCharacter.lastName,
+      level: inputCharacter.level,
       strength: inputCharacter.strength,
       armorClass: inputCharacter.armorClass,
       charisma: inputCharacter.charisma,
@@ -121,6 +127,7 @@ class Character {
     return {
       'firstName': firstName,
       'lastName': lastName,
+      'level': level,
       'strength': strength,
       'dexterity': dexterity,
       'constitution': constitution,
@@ -143,6 +150,7 @@ class Character {
     return Character(
       firstName: json['firstName'],
       lastName: json['lastName'],
+      level: json['level'] as int?,
       strength: json['strength'],
       dexterity: json['dexterity'],
       constitution: json['constitution'],
